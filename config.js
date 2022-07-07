@@ -37,6 +37,7 @@ global.packname = "Sticker By"
 global.author = "Idioxbot"
 global.themeemoji = ""
 global.reactmoji = ""
+global.dogeemoji =""
 global.ownertag = ['Dev Idioxpedia'] //ur owner tag
 global.ownernummenu = ['62895325677273','6285161310376'] //ur owner number in menu and all
 global.watermark = "idioxbot" //ur watermark
