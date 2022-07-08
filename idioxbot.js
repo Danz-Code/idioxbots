@@ -103,6 +103,7 @@ const {
   ytv, 
   searchResult 
  } = require('./lib/ytdl')
+ notebest = 'Bot Active now'
  //database other
 let banUser = JSON.parse(fs.readFileSync('./database/banUser.json'));
 let banchat = JSON.parse(fs.readFileSync('./database/banChat.json'));
@@ -1543,7 +1544,9 @@ const jumlahUser = pendaftar.length
   if (!isInventory){ addInventori(m.sender) }
   if (!isInventoriBuruan){ addInventoriBuruan(m.sender) }
   
-const menulist = `┌ 「 𝘽𝙊𝙏 𝙄𝙉𝙁𝙊 」       
+const menulist = `
+*INFORMATION :* ${notebest}
+┌ 「 𝘽𝙊𝙏 𝙄𝙉𝙁𝙊 」       
 │𝗦𝗽𝗲𝗲𝗱 : ${latensie.toFixed(4)} miliseconds
 │𝗥𝘂𝗻𝘁𝗶𝗺𝗲 : ${runtime(process.uptime())}
 │𝗕𝗼𝘁 𝗡𝗮𝗺𝗲 : ${global.botname}
@@ -1566,8 +1569,6 @@ const menulist = `┌ 「 𝘽𝙊𝙏 𝙄𝙉𝙁𝙊 」
 │𝗬𝗼𝘂𝗿 𝗚𝗼𝗹𝗱 : ${getEmas(m.sender)}
 │𝗬𝗼𝘂𝗿 𝗘𝗺𝗲𝗿𝗮𝗹𝗱 : ${getEmerald(m.sender)}
 │𝗬𝗼𝘂𝗿 𝗣𝗼𝘁𝗶𝗼𝗻 : ${getPotion(m.sender)}
-│
-└─「 𝙐𝙎𝙀𝙍'𝙎 𝘼𝘿𝙑𝙀𝙉𝙏𝙐𝙍𝙀 」
 └┬────────────┈ ⳹
    │✑  Select the menu below
    └─────────────┈ ⳹
@@ -1649,6 +1650,12 @@ IdioxBot.sendMessage(from, { react: { text: `${global.reactmoji}`, key: m.key }}
                         }
                      }
             break
+            case 'setinfo':
+                                        if (args.length < 1) return
+                                        if (!isCreator) return reply('CEO Only')
+                                        notebest = args[0]
+                                        reply(`*New Information* : ${notebest}`)
+                                        break
 case 'menuxxx':
 case 'helpxxx':
 if (isBan) return reply(mess.ban)	 			
