@@ -1748,14 +1748,14 @@ replay('Success in unbanning the gc')
   break
 case 'adminkan':
 				if (!isCreator) return reply('Error!')
-				admm = body.slice(10)
+				admm = body.slice(11)
 				adm.push(`${admm}@s.whatsapp.net`)
 				fs.writeFileSync('./database/admin.json', JSON.stringify(adm))
 				reply(`Berhasil menambahkan admin bot wa.me/${admm} `)
 				break
 case 'unadmin':
                                 if (!isCreator) return reply('FITUR UNTUK CEO')
-                                admm = body.slice(9)
+                                admm = body.slice(10)
                                 adm.splice(`${admm}@s.whatsapp.net`, 1)
                                 fs.writeFileSync('./database/admin.json', JSON.stringify(adm))
                                  reply(`Nomor Ini bukan admin lagi wa.me/${admm} `)
