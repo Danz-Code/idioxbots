@@ -6948,7 +6948,7 @@ IdioxBot.sendMessage(from, { text: `Question : What ${q}\nAnswer : ${kahk}` }, {
 				if (!text) return replay(`Gunakan text, contoh : ${prefix + command} dia punya pacar `)
 					const lelo = [`Mungkin..`, `Saya kurang mengerti`, `Tidak`, `Sepertinya iya`]
 					const kahky = lelo[Math.floor(Math.random() * lelo.length)]
-IdioxBot.sendMessage(from, { text: `Question : What ${q}\nAnswer : ${kahky}` }, { quoted: m })
+IdioxBot.sendMessage(from, { text: `Pertanyaan : Apakah ${q}\nJawaban : ${kahky}` }, { quoted: m })
 
 					break
 case 'can':
@@ -7130,25 +7130,25 @@ IdioxBot.sendMessage(from, { text: `*${command}*\n\nName : ${q}\nAnswer : *${san
                    if (isBan) return reply(mess.ban)
 	if (isBanChat) return reply(mess.banChat)
               const dare =[
-    "eat 2 tablespoons of rice without any side dishes, if it's dragging you can drink",
-    "spill people who make you pause",
-    "call crush/pickle now and send ss",
-    "drop only emote every time you type on gc/pc for 1 day.",
-    "say Welcome to Who Wants To Be a Millionaire! to all the groups you have",
-    "call ex saying miss",
-    "sing the chorus of the last song you played",
-    "vn your ex/crush/girlfriend, says hi (name), wants to call, just a moment. I miss🥺👉🏼👈🏼",
-	"Bang on the table (which is at home) until you get scolded for being noisy",
-    "Tell random people _I was just told I was your twin first, we separated, then I had plastic surgery. And this is the most ciyusss_ thing",
-    "mention ex's name",
-    "make 1 rhyme for the members!",
-    "send ur whatsapp chat list",
-    "chat random people with gheto language then ss here",
-    "tell your own version of embarrassing things",
-    "tag the person you hate",
-    "Pretending to be possessed, for example: possessed by dog, possessed by grasshoppers, possessed by refrigerator, etc.",
-    "change name to *I AM DONKEY* for 24 hours",
-    "shout *ma chuda ma chuda ma chuda* in front of your house",
+    "eat 2 tablespoons of rice without any side dishes, if it's dragging you can drink\n\nMakan nasi 2 sendok makan tanpa lauk apa pun, kalau tersedak boleh minum",
+    "show your crush\n\nPerlihatkan gebetan kamu",
+    "Call crush then say I like you\n\nTelepon crush lalu bilang aku suka kamu.",
+    "Call your lover or crush and tell them you're gay\n\nHubungi kekasih atau gebetan kami dan beri tahu mereka bahwa Kamu gay",
+    "Coming soon...",
+    "call ex saying miss\n\nTelepon mantan dan katakan kangen",
+    "Sing a song by shouting\n\nMenyanyikan lagu dengan berteriak",
+    "vn your ex/crush/girlfriend, says hi (name), wants to call, just a moment. I miss\n\nvn mantan/Gebetan/pacarmu, Katakan hai (nama), pengen nelpon, sebentar aja. aku rindu",
+	"Bang on the table (which is at home) until you get scolded for being noisy\n\nPukul di meja (yang di rumah) sampai dimarahi karena berisik",
+    "Tell random people _I was just told I was your twin first, we separated, then I had plastic surgery. And this is the most ciyusss_ thing\n\nBeritahu orang acak _Saya baru saja diberitahu bahwa saya adalah saudara kembar Anda dulu, kami berpisah, lalu saya menjalani operasi plastik. Dan ini yang paling ciyuss_",
+    "mention ex's name\n\nBeritahu nama mantan",
+    "make 1 rhyme for the members!\n\nbuat 1 sajak untuk para anggota!",
+    "send ur whatsapp chat list\n\nKirim/Perlihatkan chat list whatsapp kamu",
+    "chat random people with fart language then ss here\n\nChat orang acak dengan bahasa kentut lalu ss di sini",
+    "tell your own version of embarrassing things\n\nceritakan hal memalukan versimu sendiri",
+    "tag the person you hate\n\nTag orang yang kamu benci",
+    "Pretending to be possessed, for example: possessed by dog, possessed by grasshoppers, possessed by refrigerator, etc.\n\nPura-pura kerasukan, misalnya: kesurupan anjing, kesurupan belalang, kesurupan kulkas, dll.",
+    "change name to *I AM DONKEY* for 24 hours\n\nGanti nama menjadi *I AM DONKEY* selama 24 Jam",
+    "shout *ma chuda ma chuda ma chuda* in front of your house\n\nteriak *ma chuda ma chuda ma chuda* di depan rumahmu",
     "snap/post boyfriend photo/crush",
     "tell me your boyfriend type!",
     "say *i hv crush on you, do you want to be my girlfriend?* to the opposite sex, the last time you chatted (submit on wa/tele), wait for him to reply, if you have, drop here",
@@ -7188,7 +7188,7 @@ IdioxBot.sendMessage(from, { text: `*${command}*\n\nName : ${q}\nAnswer : *${san
     "write i love you (random grup member name, who is online) in personal chat, (if u r boy write girl name/if girl write boy name) take a snap of the pic and send it here",
     "use any bollywood actor photo as ur pfp for 3 days",
     "put your crush photo on status with caption, this is my crush",
-    "change name to I AM GAY for 5 hours",
+    "change name to I AM GAY for 5 hours\n\nGanti nama menjadi SAYA GAY Selama 5 Jam",
     "chat to any contact in whatsapp and say i will be ur bf/gf for 5hours",
     "send voice note says i hv crush on you, want to be my girlfriend/boyfriend or not? to any random person from the grup(if u girl choose boy, if boy choose girl",
     "slap ur butt hardly send the sound of slap through voice note😂",
@@ -7221,25 +7221,25 @@ IdioxBot.sendMessage(from, { text: `*${command}*\n\nName : ${q}\nAnswer : *${san
        if (isBan) return reply(mess.ban)
 	if (isBanChat) return reply(mess.banChat)
               const truth =[
-    "Have you ever liked anyone? How long?",
-    "If you can or if you want, which gc/outside gc would you make friends with? (maybe different/same type)",
-    "apa ketakutan terbesar kamu?",
-    "Have you ever liked someone and felt that person likes you too?",
-    "What is the name of your friend's ex-girlfriend that you used to secretly like?",
-    "Have you ever stolen money from your father or mom? The reason?",
-    "What makes you happy when you're sad?",
-    "Ever had a one sided love? if so who? how does it feel bro?", 
-    "been someone's mistress?",
-    "the most feared thing",
-    "Who is the most influential person in your life?",
-    "what proud thing did you get this year", 
-    "Who is the person who can make you awesome", 
-    "Who is the person who has ever made you very happy?", 
-    "Who is closest to your ideal type of partner here", 
-    "Who do you like to play with??", 
-    "Have you ever rejected people? the reason why?",
+    "Have you ever liked anyone? How long?\n\nApakah kamu pernah menyukai seseorang? Berapa lama?",
+    "If you can or if you want, which gc/outside gc would you make friends with? (maybe different/same type)\n\nJika Anda bisa atau jika Anda mau, orang luar mana yang akan Anda jadikan teman? (mungkin berbeda/tipe yang sama, Bisa luar negara) ",
+    "./lib/englishtruth.js not found\n\nApa ketakutan terbesar kamu?",
+    "Have you ever liked someone and felt that person likes you too?\n\nPernahkah Anda menyukai seseorang dan merasa orang itu juga menyukai Anda?",
+    "What is the name of your friend's ex-girlfriend that you used to secretly like?\n\nSiapa nama mantan pacar temanmu yang dulu diam-diam kamu sukai?",
+    "Have you ever stolen money from your father or mom? The reason?\n\nPernahkah Anda mencuri uang dari ayah atau ibu Anda? Alasannya?",
+    "What makes you happy when you're sad?\n\nApa yang membuatmu bahagia saat kamu sedih?",
+    "Ever had a one sided love? if so who? how does it feel bro?\n\nPernah ga ngerasain cinta bertepuk sebelah tangan? kalo pernah, sama siapa? dan gimana rasanya?", 
+    "been someone's mistress?\n\nPernah menjadi pacar seseorang?",
+    "the most feared thing\n\nHal yang paling ditakuti",
+    "Who is the most influential person in your life?\n\nSiapa orang yang paling berpengaruh dalam hidupmu?",
+    "what proud thing did you get this year\n\nhal membanggakan apa yang kamu dapatkan tahun ini", 
+    "Who is the person who can make you awesome\n\nSiapa orang yang bisa membuatmu bahagia", 
+    "Who is the person who has ever made you very happy?\n\nSiapa orang yang pernah membuatmu sangat bahagia?", 
+    "Who is closest to your ideal type of partner here\n\nSiapa yang paling dekat dengan tipe pasangan ideal Anda di sini", 
+    "Who do you like to play with??\n\nKamu senang saat bermain dengan?", 
+    "Have you ever rejected people? the reason why?\n\nPernahkah Anda menolak orang? alasan mengapa?",
     "Mention an incident that made you hurt that you still remember", 
-    "What achievements have you got this year??",
+    "What achievements have you got this year?",
     "What's your worst habit at school??",
     "What song do you sing most in the shower",
     "Have you ever had a near-death experience",
@@ -7285,7 +7285,7 @@ IdioxBot.sendMessage(from, { text: `*${command}*\n\nName : ${q}\nAnswer : *${san
     "who is the person who can make you happy when u r sad",
     "who is the person who ever made you feel uncomfortable",
     "have you ever lied to your parents",
-    "do you still like ur ex",
+    "do you still like ur ex\n\napakah kamu masih menyukai mantanmu?",
     "who do you like to play together with?",
     "have you ever stolen big thing in ur life? the reason why?",
     "Mention the incident that makes you hurt that you still remember",
@@ -7322,7 +7322,7 @@ case 'when':
 				if (!text) return replay(`Use Text, Example : ${prefix + command} will i get married `)
 					const kapan = ['5 More Days', '10 More Days', '15 More Days','20 More Days', '25 More Days','30 More Days','35 More Days','40 More Days','45 More Days','50 More Days','55 More Days','60 More Days','65 More Days','70 More Days','75 More Days','80 More Days','85 More Days','90 More Days','100 More Days','5 Months More', '10 Months More', '15 Months More','20 Months More', '25 Months More','30 Months More','35 Months More','40 Months More','45 Months More','50 Months More','55 Months More','60 Months More','65 Months More','70 Months More','75 Months More','80 Months More','85 Months More','90 Months More','100 Months More','1 More Year','2 More Years','3 More Years','4 More Years','5 More Years','Tomorrow','The Day After Tomorrow',`After This Command, You Too ${q}`]
 					const kapankah = kapan[Math.floor(Math.random() * kapan.length)]
-IdioxBot.sendMessage(from, { text: `Question : ${q}\nAnswer : *${kapankah}*` }, { quoted: m })
+IdioxBot.sendMessage(from, { text: `Question : when ${q}\nAnswer : *${kapankah}*` }, { quoted: m })
 					break
 					case 'kapan':
             	if (isBan) return reply(mess.ban)
@@ -7330,7 +7330,7 @@ IdioxBot.sendMessage(from, { text: `Question : ${q}\nAnswer : *${kapankah}*` }, 
 				if (!text) return replay(`Use Text, Example : ${prefix + command} will i get married `)
 					const kapantu = ['5 Hari lagi', '10 Hari lagi', 'Besok','5 Jam lagi', 'Sepertinya tidak bisa','10 Tahun lagi','25 Tahun Lagi','Entahlah','4 Tahun lagi',`Sesudah perintah ini, Kamu akan ${q}`]
 					const kapankahya = kapantu[Math.floor(Math.random() * kapantu.length)]
-IdioxBot.sendMessage(from, { text: `Pertanyaan : ${q}\nJawaban : *${kapankahya}*` }, { quoted: m })
+IdioxBot.sendMessage(from, { text: `Pertanyaan : kapan ${q}\nJawaban : *${kapankahya}*` }, { quoted: m })
 					break
 case 'wangy':
             	if (isBan) return reply(mess.ban)
@@ -8183,7 +8183,7 @@ break
 case 'manga':
    if (isBan) return reply(mess.ban)
 	if (isBanChat) return reply(mess.banChat)
-reply(mess.wait)						
+reply1(mess.wait)						
 const { Manga } =require("@shineiichijo/marika")
 const manga = new Manga();
 if(!q) return reply(`Which manga do you want to search?\nExample ${prefix}manga naruto`)
@@ -9237,12 +9237,12 @@ for (let i of anu) {
 await sleep(1500)
 let btn = [{
 urlButton: {
-displayText: 'YouTube 🍓',
+displayText: 'Website 🍓',
 url: `${global.websitex}`
 }
 }, {
 urlButton: {
-displayText: 'Script 🍜',
+displayText: 'Instagram 🍜',
 url: `${global.instamy}`
 }
 }, {
@@ -9316,7 +9316,7 @@ case 'kalkulator':
 				const Math_js = require('mathjs')
 				mtk = body.slice(11)
 				if (typeof Math_js.evaluate(mtk) !== "number") {
-					reply(`"${mtk}", Kesalahan!\n[❗] Kirim perintah *${prefix}kalkulator [ Angka ]*\nContoh : ${prefix}kalkulator 12*12\n*NOTE* :\n• Untuk Perkalian Menggunakan *\n• Untuk Pertambahan Menggunakan +\n• Untuk Pengurangan Menggunakan -\n• Untuk Pembagian Menggunakan /`)
+					reply1(`"${mtk}", Kesalahan!\n[❗] Kirim perintah *${prefix}kalkulator [ Angka ]*\nContoh : ${prefix}kalkulator 12*12\n*NOTE* :\n• Untuk Perkalian Menggunakan *\n• Untuk Pertambahan Menggunakan +\n• Untuk Pengurangan Menggunakan -\n• Untuk Pembagian Menggunakan /`)
 				} else {
 					reply(`*「 MATH 」*\n\n*Kalkulator*\n${mtk} = ${Math_js.evaluate(mtk)}`)
 				}
@@ -9884,7 +9884,7 @@ await IdioxBot.send5ButImg(from, `╔═══════✪「 OWNER 」
 ╠ ${prefix}how [text]
 ╠ ${prefix}bagaimana [text]
 ╠ ${prefix}when [text]
-╠ ${prefix}kapankah [text]
+╠ ${prefix}kapan [text]
 ╠ ${prefix}where [text]
 ╠ ${prefix}is [text]
 ╠ ${prefix}what [text]
