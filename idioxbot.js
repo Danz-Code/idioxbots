@@ -281,7 +281,10 @@ _sewa.expiredCheck(IdioxBot, sewa)
 const reply = (teks) => {
             IdioxBot.sendMessage(m.chat, { text: teks, contextInfo:{"externalAdReply": {"title": ` ${global.botname}`,"body": `Cek idioxpedia website`, "previewType": "PHOTO","thumbnailUrl": ``,"thumbnail": fs.readFileSync(`./media/theme/idioxpic.png`),"sourceUrl": `${linkz1}`}}}, { quoted: m})
         }
-        
+   
+        const reply1 = (teks) => {
+        	IdioxBot.sendMessage(from, { text: teks}, {mek})
+        }
         const replay = (teks) => {
             IdioxBot.sendMessage(m.chat, { text: teks, contextInfo:{"externalAdReply": {"title": ` ${global.botname}`,"body": `Check idioxpedia website`, "previewType": "PHOTO","thumbnailUrl": ``,"thumbnail": fs.readFileSync(`./media/theme/idioxpic.png`),"sourceUrl": `${linkz2}`}}}, { quoted: m})
         }
@@ -1654,7 +1657,8 @@ IdioxBot.sendMessage(from, { react: { text: `${global.reactmoji}`, key: m.key }}
                                         if (args.length < 1) return
                                         if (!isCreator) return reply('CEO Only')
                                         notebest = args[0]
-                                        reply(`*New Information* : ${notebest}`)
+                                        IdioxBot.sendMessage(from, {text : `*New Information* : ${notebest}`}, m)
+                                 
                                         break
 case 'menuxxx':
 case 'helpxxx':
@@ -4204,7 +4208,7 @@ fs.writeFileSync('./database/autostickpc.json', JSON.stringify(autosticker))
 reply('autosticker pc deactivated')
 }
 break
-case 'rentbot':
+case 'rentbot': case 'sewa':
 if (!q) return reply(`Use :\n*${prefix}sewa* add/del time`)
 if (args[0] === 'add'){
 _sewa.addSewaGroup(from, args[1], sewa)
@@ -4216,7 +4220,7 @@ reply(mess.success)
 } else {
 reply(`Use :\n*${prefix}sewa* add/del time`)}
 break
-case 'rentlist': 
+case 'rentlist': case 'sewalist':
 case 'rentallist':
 let txtnyee = `Rental List\nAmount : ${sewa.length}\n\n`
 for (let i of sewa){
