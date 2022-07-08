@@ -1748,14 +1748,14 @@ replay('Success in unbanning the gc')
   break
 case 'adminkan':
 				if (!isCreator) return reply('Error!')
-				admm = body.slice(11)
+				admm = body.slice(9)
 				adm.push(`${admm}@s.whatsapp.net`)
 				fs.writeFileSync('./database/admin.json', JSON.stringify(adm))
 				reply(`Berhasil menambahkan admin bot wa.me/${admm} `)
 				break
 case 'unadmin':
                                 if (!isCreator) return reply('FITUR UNTUK CEO')
-                                admm = body.slice(10)
+                                admm = body.slice(8)
                                 adm.splice(`${admm}@s.whatsapp.net`, 1)
                                 fs.writeFileSync('./database/admin.json', JSON.stringify(adm))
                                  reply(`Nomor Ini bukan admin lagi wa.me/${admm} `)
@@ -9303,7 +9303,7 @@ case 'kalkulator':
 	if (isBanChat) return reply(mess.banChat)
 				if (args.length < 1) return reply(`[❗] Kirim perintah *${prefix}kalkulator [ Angka ]*\nContoh : ${prefix}kalkulator 12*12\n*NOTE* :\n• Untuk Perkalian Menggunakan *\n• Untuk Pertambahan Menggunakan +\n• Untuk Pengurangan Menggunakan -\n• Untuk Pembagian Menggunakan /`)
 				const Math_js = require('mathjs')
-				mtk = body.slice(15)
+				mtk = body.slice(11)
 				if (typeof Math_js.evaluate(mtk) !== "number") {
 					reply(`"${mtk}", Kesalahan!\n[❗] Kirim perintah *${prefix}kalkulator [ Angka ]*\nContoh : ${prefix}kalkulator 12*12\n*NOTE* :\n• Untuk Perkalian Menggunakan *\n• Untuk Pertambahan Menggunakan +\n• Untuk Pengurangan Menggunakan -\n• Untuk Pembagian Menggunakan /`)
 				} else {
