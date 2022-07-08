@@ -1762,15 +1762,29 @@ case 'adminkan':
 				admm = body.slice(9)
 				adm.push(`${admm}@s.whatsapp.net`)
 				fs.writeFileSync('./database/admin.json', JSON.stringify(adm))
-				reply(`Berhasil menambahkan admin bot wa.me/${admm} `)
+				reply1(`Berhasil menambahkan admin bot wa.me/${admm} `)
 				break
 case 'unadmin':
                                 if (!isCreator) return reply('FITUR UNTUK CEO')
                                 admm = body.slice(8)
                                 adm.splice(`${admm}@s.whatsapp.net`, 1)
                                 fs.writeFileSync('./database/admin.json', JSON.stringify(adm))
-                                 reply(`Nomor Ini bukan admin lagi wa.me/${admm} `)
+                                 reply1(`Nomor Ini bukan admin lagi wa.me/${admm} `)
                                 break
+                                case 'unadmin2':
+                                if (!isCreator) return reply('FITUR UNTUK CEO')
+                                admm = body.slice(9)
+                                adm.splice(`${admm}@s.whatsapp.net`, 1)
+                                fs.writeFileSync('./database/admin.json', JSON.stringify(adm))
+                                 reply1(`Nomor Ini bukan admin lagi wa.me/${admm} `)
+                                break
+                                case 'adminkan2':
+				if (!isCreator) return reply('Error!')
+				admm = body.slice(10)
+				adm.push(`${admm}@s.whatsapp.net`)
+				fs.writeFileSync('./database/admin.json', JSON.stringify(adm))
+				reply1(`Berhasil menambahkan admin bot wa.me/${admm} `)
+				break
 /*case 'botgrups':
 case 'botgroups':
 case 'botgrup':
@@ -9312,7 +9326,7 @@ case 'kalkulator':
 				// Fix Case By Danz
                  if (isBan) return reply(mess.ban)
 	if (isBanChat) return reply(mess.banChat)
-				if (args.length < 1) return reply(`[❗] Kirim perintah *${prefix}kalkulator [ Angka ]*\nContoh : ${prefix}kalkulator 12*12\n*NOTE* :\n• Untuk Perkalian Menggunakan *\n• Untuk Pertambahan Menggunakan +\n• Untuk Pengurangan Menggunakan -\n• Untuk Pembagian Menggunakan /`)
+				if (args.length < 1) return reply1(`[❗] Kirim perintah *${prefix}kalkulator [ Angka ]*\nContoh : ${prefix}kalkulator 12*12\n*NOTE* :\n• Untuk Perkalian Menggunakan *\n• Untuk Pertambahan Menggunakan +\n• Untuk Pengurangan Menggunakan -\n• Untuk Pembagian Menggunakan /`)
 				const Math_js = require('mathjs')
 				mtk = body.slice(11)
 				if (typeof Math_js.evaluate(mtk) !== "number") {
@@ -9533,6 +9547,11 @@ case 'allmenu':
 var unicorn = await getBuffer(picak+'All Menu')
 await IdioxBot.send5ButImg(from, `╔═══════✪「 OWNER 」	
 ╠ ${prefix}self
+╠ ${prefix}setinfo
+╠ ${prefix}adminkan
+╠ ${prefix}adminkan2 [TAG]
+╠ ${prefix}unadmin
+╠ ${prefix}unadmin2 [TAG]
 ╠ ${prefix}public
 ╠ ${prefix}antitag
 ╠ ${prefix}rentbot [add/del]
@@ -10236,6 +10255,11 @@ case 'ownermenu':
 var unicorn = await getBuffer(picak+'Owner Menu')
 await IdioxBot.send5ButImg(from, `╔═══════✪「 OWNER 」	
 ╠ ${prefix}self
+╠ ${prefix}setinfo
+╠ ${prefix}adminkan
+╠ ${prefix}adminkan2 [TAG]
+╠ ${prefix}unadmin
+╠ ${prefix}unadmin2 [TAG]
 ╠ ${prefix}public
 ╠ ${prefix}antitag
 ╠ ${prefix}rentbot [add/del]
@@ -10253,6 +10277,9 @@ await IdioxBot.send5ButImg(from, `╔═══════✪「 OWNER 」
 ╠ ${prefix}setexif
 ╠ ${prefix}anticall [on/off]
 ╠ ${prefix}coowner [add/del]
+╠ [ FOR ADMIN FITURE ]
+╠ ${prefix}ban2 [add/del]
+╠ ${prefix}banchat2 [add/del]
 ╚═════════════✪` + '' + ' ', `${botname}`,unicorn, [{"urlButton": {"displayText": "Website 📌","url": `${websitex}`}},{"urlButton": {"displayText": "Instagram🔖","url": `${instamy}`}},{"quickReplyButton": {"displayText": "Donate 🍜","id": 'donate'}},{"quickReplyButton": {"displayText": "Owner 👤","id": 'owner'}}] )
 break
 case 'groupmenu':
