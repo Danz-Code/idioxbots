@@ -5623,6 +5623,14 @@ if (isBanChat) return reply(mess.banChat)
 
          }
          break
+       /*  case 'ttp2':
+				if (isBan) return reply(mess.ban)	 			
+if (isBanChat) return reply(mess.banChat)
+				if (args.length < 1) return reply(`_Apa yang mau dijadiin tulisan? Titit? Tulisannya mana?_\n*Contoh ${prefix}ttp Wajahku Ganteng*`)
+				ttp = await getBuffer(`https://api.lolhuman.xyz/api/ttp2?apikey=${lolkey}&text=${body.slice(6)}`)
+				IdioxBot.sendMessage(from, ttp, sticker, {quoted: mek})
+	            
+				break*/ 
 case 'toimage': case 'toimg': {
    if (isBan) return reply(mess.ban)	 			
 if (isBanChat) return reply(mess.banChat)
@@ -5734,9 +5742,10 @@ encmedia = await IdioxBot.sendImageAsSticker(from, wifegerakx, m, { packname: gl
 await fs.unlinkSync(encmedia)
 }
 break
-case 'tagme':
-			  text_v = `@${sender.split("@")[0]}`
-			  mentions(text_v, [sender], true)
+case 'tagme': 
+			  let text_v = `@${m.sender.split("@")[0]}`
+		
+			IdioxBot.sendMessage(m.chat, { text: text_v, mentions: participants.map(a => a.id) }, { quoted: m })
 			  break
 case 'gura':
 case 'gurastick':{
@@ -6887,6 +6896,23 @@ Cieeee, What's Going On❤️💖👀`
                     await IdioxBot.sendButtonText(m.chat, buttons, jawab, IdioxBot.user.name, m, {mentions: ments})
             }
             break
+            case 'jodohku': {
+            	            	if (isBan) return reply(mess.ban)
+	if (isBanChat) return reply(mess.banChat)
+            if (!m.isGroup) return replay(`${mess.group}`)
+            let memberqq = participants.map(u => u.id)
+            let mexx = m.sender
+            let jodohya = memberqq[Math.floor(Math.random() * memberqq.length)]
+            let jawabuy = `👫Jodohmu adalah....
+
+@${mexx.split('@')[0]} ❤️ @${jodohya.split('@')[0]}`
+            let mentcs = [mexx, jodohya]
+            let buttonsy = [
+                        { buttonId: '❤️', buttonText: { displayText: '❤️' }, type: 1 }
+                    ]
+                    await IdioxBot.sendButtonText(m.chat, buttonsy, jawabuy, IdioxBot.user.name, m, {mentions: mentcs})
+            }
+            break
             case 'is':
                         	if (isBan) return reply(mess.ban)
 	if (isBanChat) return reply(mess.banChat)
@@ -6903,6 +6929,15 @@ IdioxBot.sendMessage(from, { text: `Question : Is ${q}\nAnswer : ${kah}` }, { qu
 					const lel = [`Ask Your Gf`, `I Dont Know`, `I Don't Know, Ask Your Father`]
 					const kahk = lel[Math.floor(Math.random() * lel.length)]
 IdioxBot.sendMessage(from, { text: `Question : What ${q}\nAnswer : ${kahk}` }, { quoted: m })
+
+					break
+					case 'apakah':
+					            	if (isBan) return reply(mess.ban)
+	if (isBanChat) return reply(mess.banChat)
+				if (!text) return replay(`Gunakan text, contoh : ${prefix + command} dia punya pacar `)
+					const lelo = [`Mungkin..`, `Saya kurang mengerti`, `Tidak`, `Sepertinya iya`]
+					const kahky = lelo[Math.floor(Math.random() * lelo.length)]
+IdioxBot.sendMessage(from, { text: `Question : What ${q}\nAnswer : ${kahky}` }, { quoted: m })
 
 					break
 case 'can':
@@ -6922,6 +6957,14 @@ case 'how':
 					const ya = gimana[Math.floor(Math.random() * gimana.length)]
 IdioxBot.sendMessage(from, { text: `Question : How ${q}\nAnswer : How ${ya}` }, { quoted: m })
 					break
+					case 'bagaimana':
+            	if (isBan) return reply(mess.ban)
+	if (isBanChat) return reply(mess.banChat)
+				if (!text) return replay(`Gunakan Teks, Contoh : ${prefix + command} Cara agar tidak jomblo`)
+					const bagai =[`Kita Kenal?`,`Ga tau`,`Tidak Tahu`,`Coba Ulangi`,`Cari Aja Sendiri`,`Kurang Tahu`,`Error!`]
+					const ya2 = bagai[Math.floor(Math.random() * bagai.length)]
+IdioxBot.sendMessage(from, { text: `Pertanyaan : Bagaimana ${q}\nJawaban : Bagaimana ${ya2}` }, { quoted: m })
+					break
 case 'rate':
             	if (isBan) return reply(mess.ban)
 	if (isBanChat) return reply(mess.banChat)
@@ -6930,7 +6973,7 @@ case 'rate':
 					const te = ra[Math.floor(Math.random() * ra.length)]
 IdioxBot.sendMessage(from, { text: `Question : Rate ${q}\nAnswer : *${te}%*` }, { quoted: m })
 					break
-  case 'handsomecheck':
+  case 'handsomecheck': case 'gantengcek':
               	if (isBan) return reply(mess.ban)
 	if (isBanChat) return reply(mess.banChat)
 				if (!text) return replay(`Tag Someone, Example : ${prefix + command} @danz`)
@@ -6938,7 +6981,7 @@ IdioxBot.sendMessage(from, { text: `Question : Rate ${q}\nAnswer : *${te}%*` }, 
 					const teng = gan[Math.floor(Math.random() * gan.length)]
 IdioxBot.sendMessage(from, { text: `*${command}*\n\nName : ${q}\nAnswer : *${teng}%*` }, { quoted: m })
 					break
-case 'beautifulcheck':
+case 'beautifulcheck': case 'cantikcek':
             	if (isBan) return reply(mess.ban)
 	if (isBanChat) return reply(mess.banChat)
 				if (!text) return replay(`Tag Someone, Example : ${prefix + command} @danz`)
@@ -6956,6 +6999,7 @@ case 'awesomecheck':
                  case 'prettycheck':
                     case 'lovelycheck':
                       case 'uglycheck':
+                      case 'jelekcek':
                                   	if (isBan) return reply(mess.ban)
 	if (isBanChat) return reply(mess.banChat)
 				if (!text) return replay(`Tag Someone, Example : ${prefix + command} @danz`)
@@ -7268,6 +7312,14 @@ case 'when':
 					const kapan = ['5 More Days', '10 More Days', '15 More Days','20 More Days', '25 More Days','30 More Days','35 More Days','40 More Days','45 More Days','50 More Days','55 More Days','60 More Days','65 More Days','70 More Days','75 More Days','80 More Days','85 More Days','90 More Days','100 More Days','5 Months More', '10 Months More', '15 Months More','20 Months More', '25 Months More','30 Months More','35 Months More','40 Months More','45 Months More','50 Months More','55 Months More','60 Months More','65 Months More','70 Months More','75 Months More','80 Months More','85 Months More','90 Months More','100 Months More','1 More Year','2 More Years','3 More Years','4 More Years','5 More Years','Tomorrow','The Day After Tomorrow',`After This Command, You Too ${q}`]
 					const kapankah = kapan[Math.floor(Math.random() * kapan.length)]
 IdioxBot.sendMessage(from, { text: `Question : ${q}\nAnswer : *${kapankah}*` }, { quoted: m })
+					break
+					case 'kapan':
+            	if (isBan) return reply(mess.ban)
+	if (isBanChat) return reply(mess.banChat)
+				if (!text) return replay(`Use Text, Example : ${prefix + command} will i get married `)
+					const kapantu = ['5 Hari lagi', '10 Hari lagi', 'Besok','5 Jam lagi', 'Sepertinya tidak bisa','10 Tahun lagi','25 Tahun Lagi','Entahlah','4 Tahun lagi',`Sesudah perintah ini, Kamu akan ${q}`]
+					const kapankahya = kapantu[Math.floor(Math.random() * kapantu.length)]
+IdioxBot.sendMessage(from, { text: `Pertanyaan : ${q}\nJawaban : *${kapankahya}*` }, { quoted: m })
 					break
 case 'wangy':
             	if (isBan) return reply(mess.ban)
@@ -9245,6 +9297,19 @@ IdioxBot.send5ButImg(yoi, txt, `${global.botname}`, log0, btn, thum)
 replay('Broadcast Success')
 }
 break    
+case 'kalkulator':
+				// Fix Case By Danz
+                 if (isBan) return reply(mess.ban)
+	if (isBanChat) return reply(mess.banChat)
+				if (args.length < 1) return reply(`[❗] Kirim perintah *${prefix}kalkulator [ Angka ]*\nContoh : ${prefix}kalkulator 12*12\n*NOTE* :\n• Untuk Perkalian Menggunakan *\n• Untuk Pertambahan Menggunakan +\n• Untuk Pengurangan Menggunakan -\n• Untuk Pembagian Menggunakan /`)
+				const Math_js = require('mathjs')
+				mtk = body.slice(13)
+				if (typeof Math_js.evaluate(mtk) !== "number") {
+					reply(`"${mtk}", Kesalahan!\n[❗] Kirim perintah *${prefix}kalkulator [ Angka ]*\nContoh : ${prefix}kalkulator 12*12\n*NOTE* :\n• Untuk Perkalian Menggunakan *\n• Untuk Pertambahan Menggunakan +\n• Untuk Pengurangan Menggunakan -\n• Untuk Pembagian Menggunakan /`)
+				} else {
+					reply(`*「 MATH 」*\n\n*Kalkulator*\n${mtk} = ${Math_js.evaluate(mtk)}`)
+				}
+				break
   case 'setmenu': {
             	if (isBan) return reply(mess.ban)
 	if (isBanChat) return reply(mess.banChat)
@@ -9805,21 +9870,27 @@ await IdioxBot.send5ButImg(from, `╔═══════✪「 OWNER 」
 ╠${prefix}hneko
 ╠${prefix}nwaifu
 ╠═══════✪「 FUN 」
-╠ ${prefix}how [text
+╠ ${prefix}how [text]
+╠ ${prefix}bagaimana [text]
 ╠ ${prefix}when [text]
+╠ ${prefix}kapankah [text]
 ╠ ${prefix}where [text]
 ╠ ${prefix}is [text]
 ╠ ${prefix}what [text]
+╠ ${prefix}apakah [text]
 ╠ ${prefix}can [text]
 ╠ ${prefix}rate [text]
 ╠ ${prefix}wangy [text]
 ╠ ${prefix}beautifulcheck [tag]
+╠ ${prefix}cantikcek [tag]
 ╠ ${prefix}awesomecheck [tag]
+╠ ${prefix}gantengcek [tag]
 ╠ ${prefix}prettycheck [tag]
 ╠ ${prefix}lesbiancheck [tag]
 ╠ ${prefix}gaycheck [tag]
 ╠ ${prefix}cutecheck [tag]
 ╠ ${prefix}uglycheck [tag]
+╠ ${prefix}jelekcek [tag]
 ╠ ${prefix}hornycheck [tag]
 ╠ ${prefix}charactercheck [tag]
 ╠ ${prefix}lovelycheck [tag]
@@ -10045,6 +10116,8 @@ await IdioxBot.send5ButImg(from, `╔═══════✪「 OWNER 」
 ╠${prefix}next
 ╠${prefix}leave
 ╠══════✪「 TOOL 」
+╠ ${prefix}kalkulator [number]
+╠ ${prefix}tagme
 ╠ ${prefix}translate [text]
 ╠ ${prefix}fliptext [text]
 ╠ ${prefix}toletter [number]
@@ -10059,6 +10132,11 @@ await IdioxBot.send5ButImg(from, `╔═══════✪「 OWNER 」
 ╠ ${prefix}delmsg
 ╠══════✪「 ISLAMIC 」
 ╠${prefix}juzamma
+╠ [ FITUR DIBAWAH MT ]
+╠${prefix}jadwalsholat 
+╠${prefix}quran [ Surah ]
+╠${prefix}quran2 [ Surah ]
+╠${prefix}quransurah [ Surah ]
 ╠══════✪「 lNDO 」
 ╠ ${prefix}darkjoke
 ╠ ${prefix}quotes
@@ -10576,21 +10654,27 @@ case 'funmenu':
 	if (isBanChat) return reply(mess.banChat)
 var unicorn = await getBuffer(picak+'Fun Menu')
 await IdioxBot.send5ButImg(from, `╔═══════✪「 Fun 」	
-╠ ${prefix}how [text
+╠ ${prefix}how [text]
+╠ ${prefix}bagaimana [text]
 ╠ ${prefix}when [text]
+╠ ${prefix}kapankah [text]
 ╠ ${prefix}where [text]
 ╠ ${prefix}is [text]
 ╠ ${prefix}what [text]
+╠ ${prefix}apakah [text]
 ╠ ${prefix}can [text]
 ╠ ${prefix}rate [text]
 ╠ ${prefix}wangy [text]
 ╠ ${prefix}beautifulcheck [tag]
+╠ ${prefix}cantikcek [tag]
 ╠ ${prefix}awesomecheck [tag]
+╠ ${prefix}gantengcek [tag]
 ╠ ${prefix}prettycheck [tag]
 ╠ ${prefix}lesbiancheck [tag]
 ╠ ${prefix}gaycheck [tag]
 ╠ ${prefix}cutecheck [tag]
 ╠ ${prefix}uglycheck [tag]
+╠ ${prefix}jelekcek [tag]
 ╠ ${prefix}hornycheck [tag]
 ╠ ${prefix}charactercheck [tag]
 ╠ ${prefix}lovelycheck [tag]
@@ -10852,6 +10936,7 @@ case 'toolmenu':
 var unicorn = await getBuffer(picak+'Tool Menu')
 await IdioxBot.send5ButImg(from, `╔═══════✪「 TOOL 」	
 ╠ ${prefix}tagme
+╠ ${prefix}kalkulator
 ╠ ${prefix}translate [text]
 ╠ ${prefix}fliptext [text]
 ╠ ${prefix}toletter [number]
