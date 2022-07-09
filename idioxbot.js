@@ -447,6 +447,15 @@ console.log(chalk.black(chalk.bgWhite('[ MESSAGE ]')), chalk.black(chalk.bgGreen
             saldo.push(obj)
             fs.writeFileSync('./database/pengguna/saldo.json', JSON.stringify(saldo))
         }
+        const checkRegisteredUser = (sender) => {
+            let status = false
+            Object.keys(_registered).forEach((i) => {
+                if (_registered[i].id === sender) {
+                    status = true
+                }
+            })
+            return status
+        }
         const addATM = (sender) => {
         	const obj = {id: sender, uang : 0}
             uang.push(obj)
