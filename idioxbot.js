@@ -216,7 +216,7 @@ const botNumber = await IdioxBot.decodeJid(IdioxBot.user.id)
 const isCreator = [botNumber, ...global.owner].map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
 const itsMe = m.sender == botNumber ? true : false
 const text = args.join(" ")
-const isRegistered = checkRegisteredUser(sender)
+const isRegistered = checkRegisteredUsers(sender)
 const from = m.chat
 const _registered = JSON.parse(fs.readFileSync('./database/user/user.json'))
 const quoted = m.quoted ? m.quoted : m
@@ -448,7 +448,7 @@ console.log(chalk.black(chalk.bgWhite('[ MESSAGE ]')), chalk.black(chalk.bgGreen
             saldo.push(obj)
             fs.writeFileSync('./database/pengguna/saldo.json', JSON.stringify(saldo))
         }
-        const checkRegisteredUser = (sender) => {
+        const checkRegisteredUsers = (sender) => {
             let status = false
             Object.keys(_registered).forEach((i) => {
                 if (_registered[i].id === sender) {
