@@ -103,7 +103,9 @@ const {
   ytv, 
   searchResult 
  } = require('./lib/ytdl')
+ //BATAS
  notebest = 'Bot Active now'
+ saldoawal = 0
  //database other
 let banUser = JSON.parse(fs.readFileSync('./database/banUser.json'));
 let banchat = JSON.parse(fs.readFileSync('./database/banChat.json'));
@@ -165,6 +167,7 @@ let tebaklirik = db.game.lirik = []
 let tebaktebakan = db.game.tebakan = []
 let vote = db.others.vote = []
 //DATABASE
+const saldo = JSON.parse(fs.readFileSync('./database/pengguna/saldo.json'))
 let pendaftar = JSON.parse(fs.readFileSync('./storage/user/user.json'))
 let balance = JSON.parse(fs.readFileSync('./database/balance.json'))
 let ssewa = JSON.parse(fs.readFileSync('./database/sewa.json'))
@@ -437,7 +440,34 @@ console.log(chalk.black(chalk.bgWhite('[ MESSAGE ]')), chalk.black(chalk.bgGreen
             pendaftar.push(objlu)
             fs.writeFileSync('./database/user.json', JSON.stringify(pendaftar))
         }
-
+        const addSaldo = (sender) => {
+                const obj = {id: sender, saldo : 0}
+            saldo.push(obj)
+            fs.writeFileSync('./database/pengguna/saldo.json', JSON.stringify(saldo))
+        }
+        const Saldouser = (sender) => {
+                let position = false
+            Object.keys(saldo).forEach((i) => {
+                if (saldo[i].id === sender) {
+                    position = i
+                }
+            })
+            if (position !== false) {
+                return saldo[position].saldo
+            }
+        }
+const confirmSaldo = (sender, amount) => {
+                let position = false
+            Object.keys(saldo).forEach((i) => {
+                if (saldo[i].id === sender) {
+		position = i
+                }
+            })      
+		if (position !== false) {  
+		saldo[position].saldo -= amount
+                fs.writeFileSync('./database/pengguna/saldo.json', JSON.stringify(saldo))
+            }
+        }
             const getUserRank = (userId) => {
     let position = null
     let found = false
@@ -1538,6 +1568,8 @@ l = 1
 monospace = '```'
 const timestampe = speed();
 const latensie = speed() - timestampe
+const xtimeyu = moment.tz('Asia/Kolkata').format('HH:mm:ss')
+const xdateyu = moment.tz('Asia/Kolkata').format('DD-MM-YYYY')
 const levelMenu = getLevelingLevel(m.sender)
 const xpMenu = getLevelingXp(m.sender)
 const uangku = getBalance(m.sender, balance)
@@ -1549,36 +1581,40 @@ const jumlahUser = pendaftar.length
   
 const menulist = `
 *INFORMATION :* ${notebest}
-┌ 「 𝘽𝙊𝙏 𝙄𝙉𝙁𝙊 」       
-│𝗦𝗽𝗲𝗲𝗱 : ${latensie.toFixed(4)} miliseconds
-│𝗥𝘂𝗻𝘁𝗶𝗺𝗲 : ${runtime(process.uptime())}
-│𝗕𝗼𝘁 𝗡𝗮𝗺𝗲 : ${global.botname}
-│𝗛𝗼𝘀𝘁 𝗡𝗮𝗺𝗲 : ${os.hostname()}
-│𝗣𝗹𝗮𝘁𝗳𝗼𝗿𝗺 : ${os.platform()}
-│𝗧𝗼𝘁𝗮𝗹 𝗨𝘀𝗲𝗿 : ${Object.keys(global.db.users).length}
-│𝗧𝗼𝘁𝗮𝗹 𝗛𝗶𝘁 : ${jumlahcmd}
-│𝗧𝗼𝘁𝗮𝗹 𝗛𝗶𝘁 𝗧𝗼𝗱𝗮𝘆 : ${jumlahharian}
+╭╾「 _*BOT INFO*_」       
+├➢ *Speed* : ${latensie.toFixed(4)} miliseconds
+├➢ *Runtime* : ${runtime(process.uptime())}
+├➢ *Bot Name* : ${global.botname}
+├➢ *Host Name* : ${os.hostname()}
+├➢ *Platform* : ${os.platform()}
+├➢ *Total User* : ${Object.keys(global.db.users).length}
+├➢ *Total Hit* : ${jumlahcmd}
+├➢ *Total Hit today* : ${jumlahharian}
 │
-└─「 𝙐𝙎𝙀𝙍'𝙎 𝙄𝙉𝙁𝙊𝙍𝙈𝘼𝙏𝙄𝙊𝙉 」
-│𝗬𝗼𝘂𝗿 𝗡𝗮𝗺𝗲 : ${pushname}
-│${prema}
-│𝗬𝗼𝘂𝗿 𝗟𝗲𝘃𝗲𝗹𝗶𝗻𝗴 : ${levelMenu}
-│𝗬𝗼𝘂𝗿 𝗫𝗽 : ${xpMenu}\ ${reqXp}
-│𝗬𝗼𝘂𝗿 𝗥𝗼𝗹𝗲 : ${role}
-│𝗬𝗼𝘂𝗿 𝗠𝗼𝗻𝗲𝘆 : $${uangku}
+╰╾「 _*USER INFORMATION*_ 」
+├➢ *Your Name* : ${pushname}
+├➢ *Status* : ${prema}
+├➢ *Your Leveling* : ${levelMenu}
+├➢ *Your Xp* : ${xpMenu}\ ${reqXp}
+├➢ *Your Role* : ${role}
+├➢ *Your Money* : $${uangku}
 │
-└─「 𝙐𝙎𝙀𝙍'𝙎 𝘼𝘿𝙑𝙀𝙉𝙏𝙐𝙍𝙀 」
-│𝗬𝗼𝘂𝗿 𝗜𝗿𝗼𝗻 : ${getBesi(m.sender)}
-│𝗬𝗼𝘂𝗿 𝗚𝗼𝗹𝗱 : ${getEmas(m.sender)}
-│𝗬𝗼𝘂𝗿 𝗘𝗺𝗲𝗿𝗮𝗹𝗱 : ${getEmerald(m.sender)}
-│𝗬𝗼𝘂𝗿 𝗣𝗼𝘁𝗶𝗼𝗻 : ${getPotion(m.sender)}
-└┬────────────┈ ⳹
-   │✑  Select the menu below
+╰╾「 _*DATE INFORMATION*_ 」
+├➢ *Date* : ${xdateyu}
+├➢ *Day* : ${thishari}
+├➢ *Hours* : ${xtimeyu}
+╰╾「 _*USER ADVENTURE*_ 」
+├➢ *Your Iron* : ${getBesi(m.sender)}
+├➢ *Your Gold* : ${getEmas(m.sender)}
+├➢ *Your Emerald* : ${getEmerald(m.sender)}
+├➢ *Your Potion* : ${getPotion(m.sender)}
+╰┬────────────┈ ⳹
+   │  Select the menu below
    └─────────────┈ ⳹
    
 ╔══❰ *DONATUR BOT* ❱══❍
 ║• Hamba allah
-║• El
+║• El ⨗
 ║•
 ║•
 ╚════ ⸨ *IdioxBot* ⸩  ═══ `
@@ -9570,6 +9606,15 @@ await IdioxBot.send5ButImg(from, `╔═══════✪「 OWNER 」
 ╠ ${prefix}block [tag/number]
 ╠ ${prefix}unblock [tag/number]
 ╠ ${prefix}coowner [add/del]
+╠═══════✪「 TOP UP MENU 」	   
+╠═══════✪「 FITUR DIBAWAH MT 」
+╠${prefix}topupff 
+╠${prefix}topupml 
+╠${prefix}topupucpubg
+╠${prefix}voucherpbcash 
+╠${prefix}depositsaldo
+╠${prefix}voucherunipin
+╠${prefix}vouchergs
 ╠═══════✪「 GROUP 」	        
 ╠${prefix}grousetting
 ╠${prefix}grouplink
