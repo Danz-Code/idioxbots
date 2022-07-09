@@ -71,6 +71,35 @@ global.gcrevoke = []
 global.autorep = []
 global.ntilink = []
 
+// LOAD EXPORT
+exports.limitcount = (limitCounts) => {
+	return`
+"status": true,
+  "creator": "@idioxpeople",
+  "result": {
+    "type": "limit",
+    "text": "Sisa Limit kamu ${limitCounts}",
+    "email": "idioxpedia@my.id",
+"note": "Untuk mendapatkan limit. Bisa lewat naik level melalui group atau buylimit."
+  }
+}
+`}
+exports.limitend = (pushname) => {
+	return`
+{
+  "status": true,
+  "creator": "@danz.nih._",
+  "result": {
+    "type": "limit",
+    "text": "Maaf Limit kamu sudah Habis. Silahkan hubungi Nomor Owner Dibawah.",
+    "contact": "idioxpedia@my.id"
+  }
+}
+`
+}
+exports.registered = (namaUser, umurUser, serialUser, time, sender) => {
+	return`*「 DATA IDIOX BOT 」*\n\nkamu sudah terdaftar dengan data \n\n┏━⊱Nama\n┗⊱${namaUser}\n┏━⊱Nomer\n┗⊱wa.me/${m.sender.split("@")[0]}\n┏━⊱Umur\n┗⊱${umurUser}\n┏━⊱Waktu Pendaftaran\n┗⊱${time}\n\n┏━❉ *NS* ❉━\n┣⊱${serialUser}\n┗⊱NOTE : Kamu akan terkena banned apabila nama kamu mengandung sara/penghinaan`
+}
 //omther
 global.lolhuman = "f8397ea0f91c95fe9af88c3e"
 global.sessionName = "session"
@@ -87,10 +116,13 @@ global.mess = {
     wait: '*Ditunggu sebentar kak, sedang kita proses.*',
     linkm: '*Linknya Mana?*',
     error: 'Error!',
+    wrongf: 'Format salah! ketik daftar nama|umur',
+    rediregis: 'Kamu sudah sudah terdaftar dalam database!',
     noregist: 'Kamu tidak terdaftar dalam database!',
     ban: 'You have been banned by the owner, if you want to be unbanned, chat owner.',
     nsfw: 'The nsfw feature has not been activated, please contact the admin to activate',
     banChat: 'The bot was banned in this group, please contact the owner to unban'
+
 }
 global.limitawal = {
     premium: "Infinity",
