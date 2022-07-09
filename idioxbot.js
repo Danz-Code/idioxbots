@@ -1601,7 +1601,6 @@ const menulist = `
 │
 ╰╾「 _*DATE INFORMATION*_ 」
 ├➢ *Date* : ${xdateyu}
-├➢ *Day* : ${thishari}
 ├➢ *Hours* : ${xtimeyu}
 ╰╾「 _*USER ADVENTURE*_ 」
 ├➢ *Your Iron* : ${getBesi(m.sender)}
