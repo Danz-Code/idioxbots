@@ -27,7 +27,7 @@ const { Primbon } = require('scrape-primbon')
 const { EmojiAPI } = require("emoji-api")
 const imgbbUploader = require('imgbb-uploader')
 const primbon = new Primbon()
-const { isLimit, limitAdd, getLimit, giveLimit, addBalance, kurangBalance, getBalance, isGame, gameAdd, givegame, cekGLimit } = require('./lib/limit.js');
+const { isLimit, limitAdd, getLimit, giveLimit, addBalance, kurangBalance, getBalance, isGame, gameAdd, givegame, cekGLimit, checkLimit } = require('./lib/limit.js');
 const emoji = new EmojiAPI()
 const { smsg, formatp, tanggal, formatDate, getTime, isUrl, sleep, clockString, runtime, fetchJson, getBuffer, jsonformat, format, parseMention, getRandom } = require('./lib/myfunc')
 const { aiovideodl } = require('./lib/scraper.js')
@@ -37,6 +37,7 @@ const { detikNews } = require('./lib/detik')
 const { wikiSearch } = require('./lib/wiki.js');
 const { Gempa } = require("./lib/gempa.js");
 const ms = require('ms')
+const { ind } = require('./config')
  let { covid } = require('./lib/covid.js') 
 const { jadwaltv }= require('./lib/jadwaltv');
 const { IdioxBotTiktok } = require('./lib/tiktokbydanz');
@@ -445,6 +446,29 @@ console.log(chalk.black(chalk.bgWhite('[ MESSAGE ]')), chalk.black(chalk.bgGreen
             saldo.push(obj)
             fs.writeFileSync('./database/pengguna/saldo.json', JSON.stringify(saldo))
         }
+        const addATM = (sender) => {
+        	const obj = {id: sender, uang : 0}
+            uang.push(obj)
+            fs.writeFileSync('./database/pengguna/uang.json', JSON.stringify(uang))
+        }
+        const checkLimit = function(sender) {
+          	let found = false
+                    for (let lmt of _limit) {
+                        if (lmt.id === sender) {
+                            let limitCounts = limitawal - lmt.limit
+                            if (limitCounts <= 0) return IdioxBot.sendMessage(from,ind.limitend(pushname), text, { quoted : mek })
+			    /*client.sendMessage(from,`Limit request anda sudah habis\n\n_Note : limit bisa di dapatkan dengan cara ${prefix}buylimit dan dengan naik level_`, text,{ quoted: mek})*/
+                            IdioxBot.sendMessage(from, ind.limitcount(limitCounts), text, { quoted : mek})
+                            found = true
+                        }
+                    }
+                    if (found === false) {
+                        let obj = { id: sender, limit: 0 }
+                        _limit.push(obj)
+                        fs.writeFileSync('./database/storage/user/limit.json', JSON.stringify(_limit))
+                        IdioxBot.sendMessage(from, ind.limitcount(limitCounts), text, { quoted : mek})
+                    }
+				}
         const Saldouser = (sender) => {
                 let position = false
             Object.keys(saldo).forEach((i) => {
@@ -1568,8 +1592,8 @@ l = 1
 monospace = '```'
 const timestampe = speed();
 const latensie = speed() - timestampe
-const xtimeyu = moment.tz('Asia/Kolkata').format('HH:mm:ss')
-const xdateyu = moment.tz('Asia/Kolkata').format('DD-MM-YYYY')
+const xtimeyu = moment.tz('Asia/Jakarta').format('HH:mm:ss')
+const xdateyu = moment.tz('Asia/Jakarta').format('DD-MM-YYYY')
 const levelMenu = getLevelingLevel(m.sender)
 const xpMenu = getLevelingXp(m.sender)
 const uangku = getBalance(m.sender, balance)
@@ -3116,8 +3140,6 @@ maker.textpro("https://textpro.me/create-space-3d-text-effect-online-985.html", 
   .then((data) => IdioxBot.sendMessage(m.chat, { image: { url: data }, caption: `Made by ${global.botname}` }, { quoted: m }))
   .catch((err) => console.log(err));
    break
-
-
 
 case 'lion':
    if (isBan) return reply(mess.ban)	 			
@@ -4945,6 +4967,7 @@ IdioxBot.sendMessage(m.chat, buttonMessage, { quoted: m })
 })
 }
 break
+
 case 'antitag': {
    if (isBan) return reply(mess.ban)	 			
 if (isBanChat) return reply(mess.banChat)
@@ -5449,6 +5472,12 @@ reply("Send video/audio")
 }
 }
 break
+case 'buatgrub':
+    argos = body.trim().split(' ')
+    const gcname = argos[1]
+    IdioxBot.groupCreate(gcname)
+    reply1(`Sukses membuat grup`)
+	break
 case 'bass': case 'blown': case 'deep': case 'earrape': case 'fast': case 'fat': case 'nightcore': case 'reverse': case 'robot': case 'slow': case 'smooth': case 'tupai':
                 try {
                 let set
@@ -6923,6 +6952,41 @@ storee += `\n*「 *PLAY STORE* 」*\n
 }
 reply(storee)
 break
+//////DAFTAR
+case 'daftar':
+                			if (isRegistered) return  reply(mess.rediregis())
+                			if (!q.includes('|')) return  reply(mess.wrongf())
+                			const namaUser = q.substring(0, q.indexOf('|') - 0)
+                			const umurUser = q.substring(q.lastIndexOf('|') + 1)
+                			const serialUser = createSerial(15)
+                			if(isNaN(umurUser)) return await reply('Umur harus berupa angka!!')
+                			if (namaUser.length >= 30) return reply(`why is your name so long it's a name or a train`)
+                			if (umurUser > 40) return reply(`Umurnya ketuaan om :( batasnya 40 tahun`)
+                			if (umurUser < 12) return reply(`Umurnya belum cukup dek buat menggunakan bot ini umur minimalnya 12 keatas`)
+                					try {
+								ppimg = await client.getProfilePicture(`${m.sender.split('@')[0]}@c.us`)
+								} catch {
+								ppimg = 'https://i.ibb.co/VQgzwW7/20210407-005215.jpg'
+							}
+                					veri = sender
+                					if (isGroup) {
+                    			addRegisteredUser(sender, namaUser, umurUser, time, serialUser)
+                    			await IdioxBot.sendMessage(from, ppimg, image, {quoted: mek, caption: mess.registered(namaUser, umurUser,  serialUser, time, sender)})
+                    			addATM(sender)
+					            addSaldo(sender)
+                    			addLevelingId(sender)
+                    			checkLimit(sender)
+                    			console.log(color('[REGISTER]'), color(time, 'yellow'), 'Name:', color(namaUser, 'cyan'), 'Age:', color(umurUser, 'cyan'), 'Serial:', color(serialUser, 'cyan'), 'in', color(sender || groupName))
+                			} else {
+                    			addRegisteredUser(sender, namaUser, umurUser, time, serialUser)
+                    			await IdioxBot.sendMessage(from, ppimg, image, {quoted: mek, caption: mess.registered(namaUser, umurUser, serialUser, time, sender)})
+                    			addATM(sender)
+					            addSaldo(sender)
+                    			addLevelingId(sender)
+                    			checkLimit(sender)
+                    			console.log(color('[REGISTER]'), color(time, 'yellow'), 'Name:', color(namaUser, 'cyan'), 'Age:', color(umurUser, 'cyan'), 'Serial:', color(serialUser, 'cyan'))
+                			}
+				        break
             case 'couple': {
             	            	if (isBan) return reply(mess.ban)
 	if (isBanChat) return reply(mess.banChat)
