@@ -442,47 +442,48 @@ console.log(chalk.black(chalk.bgWhite('[ MESSAGE ]')), chalk.black(chalk.bgGreen
             pendaftar.push(objlu)
             fs.writeFileSync('./database/user.json', JSON.stringify(pendaftar))
         }
-        const addSaldo = (sender) => {
-                const obj = {id: sender, saldo : 0}
+        const addSaldo = (userId) => {
+                const obj = {id: userId, saldo : 0}
             saldo.push(obj)
             fs.writeFileSync('./database/pengguna/saldo.json', JSON.stringify(saldo))
         }
-        const checkRegisteredUsers = (sender) => {
+        const checkRegisteredUsers = (userId) => {
             let status = false
             Object.keys(_registered).forEach((i) => {
-                if (_registered[i].id === sender) {
+                if (_registered[i].id === userId) {
                     status = true
                 }
             })
             return status
         }
-        const addATM = (sender) => {
-        	const obj = {id: sender, uang : 0}
+        const addATM = (userId) => {
+        	const obj = {id: userId, uang : 0}
             uang.push(obj)
             fs.writeFileSync('./database/pengguna/uang.json', JSON.stringify(uang))
         }
-        const checkLimit = function(sender) {
+        const checkLimit = function(userId) {
           	let found = false
                     for (let lmt of _limit) {
-                        if (lmt.id === sender) {
+                        if (lmt.id === userId) {
                             let limitCounts = limitawal - lmt.limit
-                            if (limitCounts <= 0) return IdioxBot.sendMessage(from,ind.limitend(pushname), text, { quoted : mek })
+                            if (limitCounts <= 0) return IdioxBot.sendMessage(from, ind.limitend(pushname), { mek })
+                           
 			    /*client.sendMessage(from,`Limit request anda sudah habis\n\n_Note : limit bisa di dapatkan dengan cara ${prefix}buylimit dan dengan naik level_`, text,{ quoted: mek})*/
-                            IdioxBot.sendMessage(from, ind.limitcount(limitCounts), text, { quoted : mek})
+                            IdioxBot.sendMessage(from, ind.limitcount(limitCounts) { quoted : mek})
                             found = true
                         }
                     }
                     if (found === false) {
-                        let obj = { id: sender, limit: 0 }
+                        let obj = { id: userId, limit: 0 }
                         _limit.push(obj)
                         fs.writeFileSync('./database/storage/user/limit.json', JSON.stringify(_limit))
                         IdioxBot.sendMessage(from, ind.limitcount(limitCounts), text, { quoted : mek})
                     }
 				}
-        const Saldouser = (sender) => {
+        const Saldouser = (userId) => {
                 let position = false
             Object.keys(saldo).forEach((i) => {
-                if (saldo[i].id === sender) {
+                if (saldo[i].id === userId) {
                     position = i
                 }
             })
@@ -490,10 +491,10 @@ console.log(chalk.black(chalk.bgWhite('[ MESSAGE ]')), chalk.black(chalk.bgGreen
                 return saldo[position].saldo
             }
         }
-const confirmSaldo = (sender, amount) => {
+const confirmSaldo = (userId, amount) => {
                 let position = false
             Object.keys(saldo).forEach((i) => {
-                if (saldo[i].id === sender) {
+                if (saldo[i].id === userId) {
 		position = i
                 }
             })      
@@ -862,7 +863,7 @@ const isInventoryMonay = cekDuluJoinAdaApaKagaMonaynyaDiJson(m.sender)
 const ikan = ['🐟','🐠','🐡']   
 
 ///DAFTAR LOAD
-const isRegistered = checkRegisteredUsers(sender)
+const isRegistered = checkRegisteredUsers(userId)
  
 //menu logo
         let picaks = [flaming,fluming,flarun,flasmurf]
@@ -6984,18 +6985,18 @@ case 'daftar':
                 					if (isGroup) {
                     			addRegisteredUser(sender, namaUser, umurUser, time, serialUser)
                     			await IdioxBot.sendMessage(from, ppimg, image, {quoted: mek, caption: mess.registered(namaUser, umurUser,  serialUser, time, sender)})
-                    			addATM(sender)
-					            addSaldo(sender)
-                    			addLevelingId(sender)
-                    			checkLimit(sender)
+                    			addATM(userId)
+					            addSaldo(userId)
+                    			addLevelingId(userId)
+                    			checkLimit(userId)
                     			console.log(color('[REGISTER]'), color(time, 'yellow'), 'Name:', color(namaUser, 'cyan'), 'Age:', color(umurUser, 'cyan'), 'Serial:', color(serialUser, 'cyan'), 'in', color(sender || groupName))
                 			} else {
                     			addRegisteredUser(sender, namaUser, umurUser, time, serialUser)
                     			await IdioxBot.sendMessage(from, ppimg, image, {quoted: mek, caption: mess.registered(namaUser, umurUser, serialUser, time, sender)})
-                    			addATM(sender)
-					            addSaldo(sender)
-                    			addLevelingId(sender)
-                    			checkLimit(sender)
+                    			addATM(userId)
+					            addSaldo(userId)
+                    			addLevelingId(userId)
+                    			checkLimit(userId)
                     			console.log(color('[REGISTER]'), color(time, 'yellow'), 'Name:', color(namaUser, 'cyan'), 'Age:', color(umurUser, 'cyan'), 'Serial:', color(serialUser, 'cyan'))
                 			}
 				        break
