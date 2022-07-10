@@ -863,7 +863,7 @@ const isInventoryMonay = cekDuluJoinAdaApaKagaMonaynyaDiJson(m.sender)
 const ikan = ['🐟','🐠','🐡']   
 
 ///DAFTAR LOAD
-const isRegistered = checkRegisteredUsers(userId)
+const isRegistered = checkRegisteredUsers(m.sender)
  
 //menu logo
         let picaks = [flaming,fluming,flarun,flasmurf]
