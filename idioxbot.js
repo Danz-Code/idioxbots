@@ -216,7 +216,6 @@ const botNumber = await IdioxBot.decodeJid(IdioxBot.user.id)
 const isCreator = [botNumber, ...global.owner].map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(m.sender)
 const itsMe = m.sender == botNumber ? true : false
 const text = args.join(" ")
-const isRegistered = checkRegisteredUsers(sender)
 const from = m.chat
 const _registered = JSON.parse(fs.readFileSync('./database/user/user.json'))
 const quoted = m.quoted ? m.quoted : m
@@ -861,7 +860,9 @@ const isInventoriBuruan = cekDuluHasilBuruanNya(m.sender)
 const isInventoryLimit = cekDuluJoinAdaApaKagaLimitnyaDiJson(m.sender)
 const isInventoryMonay = cekDuluJoinAdaApaKagaMonaynyaDiJson(m.sender)
 const ikan = ['🐟','🐠','🐡']   
-   
+
+///DAFTAR LOAD
+const isRegistered = checkRegisteredUsers(sender)
  
 //menu logo
         let picaks = [flaming,fluming,flarun,flasmurf]
