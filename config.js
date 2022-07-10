@@ -100,6 +100,9 @@ exports.limitend = (pushname) => {
 exports.registered = (namaUser, umurUser, serialUser, time, sender) => {
 	return`*「 DATA IDIOX BOT 」*\n\nkamu sudah terdaftar dengan data \n\n┏━⊱Nama\n┗⊱${namaUser}\n┏━⊱Nomer\n┗⊱wa.me/${m.sender.split("@")[0]}\n┏━⊱Umur\n┗⊱${umurUser}\n┏━⊱Waktu Pendaftaran\n┗⊱${time}\n\n┏━❉ *NS* ❉━\n┣⊱${serialUser}\n┗⊱NOTE : Kamu akan terkena banned apabila nama kamu mengandung sara/penghinaan`
 }
+exports.wrongf = () => {
+	return`「 ❗ 」*Format salah/text kosong*`
+}
 //omther
 global.lolhuman = "f8397ea0f91c95fe9af88c3e"
 global.sessionName = "session"
@@ -116,7 +119,6 @@ global.mess = {
     wait: '*Ditunggu sebentar kak, sedang kita proses.*',
     linkm: '*Linknya Mana?*',
     error: 'Error!',
-    wrongf: 'Format salah! ketik daftar nama|umur',
     rediregis: 'Kamu sudah sudah terdaftar dalam database!',
     noregist: 'Kamu tidak terdaftar dalam database!',
     ban: 'You have been banned by the owner, if you want to be unbanned, chat owner.',

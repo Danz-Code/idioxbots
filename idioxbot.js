@@ -6967,8 +6967,8 @@ reply(storee)
 break
 //////DAFTAR
 case 'daftar':
-                			if (isRegistered) return  reply(mess.rediregis())
-                			if (!q.includes('|')) return  reply(mess.wrongf())
+                			if (isRegistered) return  reply(mess.rediregis)
+                			if (!q.includes('|')) return  reply(ind.wrongf())
                 			const namaUser = q.substring(0, q.indexOf('|') - 0)
                 			const umurUser = q.substring(q.lastIndexOf('|') + 1)
                 			const serialUser = createSerial(15)
