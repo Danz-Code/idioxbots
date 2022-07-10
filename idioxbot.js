@@ -469,7 +469,7 @@ console.log(chalk.black(chalk.bgWhite('[ MESSAGE ]')), chalk.black(chalk.bgGreen
                             if (limitCounts <= 0) return IdioxBot.sendMessage(from, ind.limitend(pushname), { mek })
                            
 			    /*client.sendMessage(from,`Limit request anda sudah habis\n\n_Note : limit bisa di dapatkan dengan cara ${prefix}buylimit dan dengan naik level_`, text,{ quoted: mek})*/
-                            IdioxBot.sendMessage(from, ind.limitcount(limitCounts) { quoted : mek})
+                            IdioxBot.sendMessage(from, ind.limitcount(limitCounts), {mek})
                             found = true
                         }
                     }
@@ -477,7 +477,7 @@ console.log(chalk.black(chalk.bgWhite('[ MESSAGE ]')), chalk.black(chalk.bgGreen
                         let obj = { id: userId, limit: 0 }
                         _limit.push(obj)
                         fs.writeFileSync('./database/storage/user/limit.json', JSON.stringify(_limit))
-                        IdioxBot.sendMessage(from, ind.limitcount(limitCounts), text, { quoted : mek})
+                        IdioxBot.sendMessage(from, ind.limitcount(limitCounts), {mek})
                     }
 				}
         const Saldouser = (userId) => {
