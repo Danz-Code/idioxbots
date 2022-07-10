@@ -217,7 +217,7 @@ const isCreator = [botNumber, ...global.owner].map(v => v.replace(/[^0-9]/g, '')
 const itsMe = m.sender == botNumber ? true : false
 const text = args.join(" ")
 const from = m.chat
-const _registered = JSON.parse(fs.readFileSync('./database/user/user.json'))
+const _registered = JSON.parse(fs.readFileSync('./database/user.json'))
 const quoted = m.quoted ? m.quoted : m
 const mime = (quoted.msg || quoted).mimetype || ''
 const isMedia = /image|video|sticker|audio/.test(mime)
