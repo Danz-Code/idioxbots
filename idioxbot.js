@@ -441,8 +441,8 @@ console.log(chalk.black(chalk.bgWhite('[ MESSAGE ]')), chalk.black(chalk.bgGreen
             return pendaftar[Math.floor(Math.random() * pendaftar.length)].id
         }
 
-        const addRegisteredUser = (userid, sender, age, time, serials) => {
-            const objlu = { id: userid, name: sender, age: age, time: time, serial: serials }
+        const addRegisteredUser = (userId, sender, age, time, serials) => {
+            const objlu = { id: userId, name: sender, age: age, time: time, serial: serials }
             pendaftar.push(objlu)
             fs.writeFileSync('./database/user.json', JSON.stringify(pendaftar))
         }
@@ -6985,17 +6985,17 @@ case 'daftar':
 								} catch {
 								ppimg = 'https://i.ibb.co/VQgzwW7/20210407-005215.jpg'
 							}
-                					veri = sender
+                					veri = m.sender
                 					if (isGroup) {
-                    			addRegisteredUser(sender, namaUser, umurUser, time, serialUser)
+                    			addRegisteredUser(userId, namaUser, umurUser, time, serialUser)
                     			await IdioxBot.sendMessage(from, ppimg, image, {quoted: mek, caption: mess.registered(namaUser, umurUser,  serialUser, time, sender)})
                     			addATM(userId)
 					            addSaldo(userId)
                     			addLevelingId(userId)
                     			checkLimit(userId)
-                    			console.log(color('[REGISTER]'), color(time, 'yellow'), 'Name:', color(namaUser, 'cyan'), 'Age:', color(umurUser, 'cyan'), 'Serial:', color(serialUser, 'cyan'), 'in', color(sender || groupName))
+                    			console.log(color('[REGISTER]'), color(time, 'yellow'), 'Name:', color(namaUser, 'cyan'), 'Age:', color(umurUser, 'cyan'), 'Serial:', color(serialUser, 'cyan'), 'in', color(m.sender || groupName))
                 			} else {
-                    			addRegisteredUser(sender, namaUser, umurUser, time, serialUser)
+                    			addRegisteredUser(userId, namaUser, umurUser, time, serialUser)
                     			await IdioxBot.sendMessage(from, ppimg, image, {quoted: mek, caption: mess.registered(namaUser, umurUser, serialUser, time, sender)})
                     			addATM(userId)
 					            addSaldo(userId)
