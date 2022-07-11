@@ -33,6 +33,7 @@ const { smsg, formatp, tanggal, formatDate, getTime, isUrl, sleep, clockString, 
 const { aiovideodl } = require('./lib/scraper.js')
 const cheerio = require ("cheerio");
 const textpro = require('./lib/textpro')
+const crypto = require('crypto')
 const { detikNews } = require('./lib/detik')
 const { wikiSearch } = require('./lib/wiki.js');
 const { Gempa } = require("./lib/gempa.js");
@@ -433,6 +434,9 @@ console.log(chalk.black(chalk.bgWhite('[ MESSAGE ]')), chalk.black(chalk.bgGreen
             _level.push(obj)
             fs.writeFileSync('./database/level.json', JSON.stringify(_level))
             }
+            const createSerial = (size) => {
+            return crypto.randomBytes(size).toString('hex').slice(0, size)
+        }
 	   const getRegisteredRandomId = () => {
             return pendaftar[Math.floor(Math.random() * pendaftar.length)].id
         }
@@ -6968,7 +6972,7 @@ break
 //////DAFTAR
 case 'daftar':
                 			if (isRegistered) return  reply1(mess.rediregis)
-                			if (!q.includes('|')) return  reply('Format Salah!')
+                			if (!q.includes('|')) return  reply1(`Format Salah! Ketik ${prefix}daftar Nama|Umur`)
                 			const namaUser = q.substring(0, q.indexOf('|') - 0)
                 			const umurUser = q.substring(q.lastIndexOf('|') + 1)
                 			const serialUser = createSerial(15)
