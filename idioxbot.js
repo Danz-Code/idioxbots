@@ -27,7 +27,7 @@ const { Primbon } = require('scrape-primbon')
 const { EmojiAPI } = require("emoji-api")
 const imgbbUploader = require('imgbb-uploader')
 const primbon = new Primbon()
-const { isLimit, limitAdd, getLimit, giveLimit, addBalance, kurangBalance, getBalance, isGame, gameAdd, givegame, cekGLimit, checkLimit } = require('./lib/limit.js');
+const { isLimit, limitAdd, getLimit, giveLimit, addBalance, kurangBalance, getBalance, isGame, gameAdd, givegame, cekGLimit } = require('./lib/limit.js');
 const emoji = new EmojiAPI()
 const { smsg, formatp, tanggal, formatDate, getTime, isUrl, sleep, clockString, runtime, fetchJson, getBuffer, jsonformat, format, parseMention, getRandom } = require('./lib/myfunc')
 const { aiovideodl } = require('./lib/scraper.js')
@@ -464,23 +464,22 @@ console.log(chalk.black(chalk.bgWhite('[ MESSAGE ]')), chalk.black(chalk.bgGreen
         	const obj = {id: userId, uang : 0}
             uang.push(obj)
             fs.writeFileSync('./database/pengguna/uang.json', JSON.stringify(uang))
-        }
-        const checkLimit = function(userId) {
+        }    
+        const checkLimit = (userId) => {
           	let found = false
                     for (let lmt of _limit) {
-                        if (lmt.id === userId) {
+                        if (lmt.id === m.sender) {
                             let limitCounts = limitawal - lmt.limit
                             if (limitCounts <= 0) return IdioxBot.sendMessage(from, ind.limitend(pushname), { mek })
-                           
 			    /*client.sendMessage(from,`Limit request anda sudah habis\n\n_Note : limit bisa di dapatkan dengan cara ${prefix}buylimit dan dengan naik level_`, text,{ quoted: mek})*/
-                            IdioxBot.sendMessage(from, ind.limitcount(limitCounts), {mek})
+                            IdioxBot.sendMessage(from, ind.limitcount(limitCounts), { mek})
                             found = true
                         }
                     }
                     if (found === false) {
-                        let obj = { id: userId, limit: 0 }
+                        let obj = { id: m.sender, limit: 0 }
                         _limit.push(obj)
-                        fs.writeFileSync('./database/storage/user/limit.json', JSON.stringify(_limit))
+                        fs.writeFileSync('./database/limit.json', JSON.stringify(_limit))
                         IdioxBot.sendMessage(from, ind.limitcount(limitCounts), {mek})
                     }
 				}
