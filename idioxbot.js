@@ -6986,7 +6986,7 @@ case 'daftar':
 								ppimg = 'https://i.ibb.co/VQgzwW7/20210407-005215.jpg'
 							}
                 					veri = m.sender
-                					if (isGroup) {
+                					if (!m.isGroup) {
                     			addRegisteredUser(userId, namaUser, umurUser, time, serialUser)
                     			await IdioxBot.sendMessage(from, ppimg, image, {quoted: mek, caption: mess.registered(namaUser, umurUser,  serialUser, time, sender)})
                     			addATM(userId)
