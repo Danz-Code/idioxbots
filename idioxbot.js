@@ -7013,7 +7013,7 @@ case 'daftar':
                 					veri = m.sender
                 					if (!m.isGroup) {
                     			addRegisteredUser(m.sender, namaUser, umurUser, time, serialUser)
-                    			await IdioxBot.sendMessage(from, ppimg, image, {quoted: mek, caption: mess.registered(namaUser, umurUser,  serialUser, time, sender)})
+                    			await IdioxBot.sendMessage(from, ppimg, image, {quoted: mek, caption: mess.registered(namaUser, umurUser,  serialUser, time, m.sender)})
                     			addATM(userId)
 					            addSaldo(userId)
                     			addLevelingId(userId)
@@ -7021,7 +7021,7 @@ case 'daftar':
                     			console.log(color('[REGISTER]'), color(time, 'yellow'), 'Name:', color(namaUser, 'cyan'), 'Age:', color(umurUser, 'cyan'), 'Serial:', color(serialUser, 'cyan'), 'in', color(m.sender || groupName))
                 			} else {
                     			addRegisteredUser(m.sender, namaUser, umurUser, time, serialUser)
-                    			await IdioxBot.sendMessage(from, ppimg, image, {quoted: mek, caption: mess.registered(namaUser, umurUser, serialUser, time, sender)})
+                    			await IdioxBot.sendMessage(from, ppimg, image, {quoted: mek, caption: mess.registered(namaUser, umurUser, serialUser, time, m.sender)})
                     			addATM(userId)
 					            addSaldo(userId)
                     			addLevelingId(userId)
