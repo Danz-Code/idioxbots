@@ -428,10 +428,10 @@ console.log(chalk.black(chalk.bgWhite('[ MESSAGE ]')), chalk.black(chalk.bgGreen
                 fs.writeFileSync('./database/level.json', JSON.stringify(_level))
                 }
             }
-           const isSaldo = (m.sender) =>{       
+           const isSaldo = (sender) =>{       
  let position = false
   for (let i of saldo) {
-              if (i.id === m.sender) {
+              if (i.id === sender) {
 
   let saldos = i.saldo 
 		if (saldos >= saldoawal ) {
@@ -442,8 +442,9 @@ console.log(chalk.black(chalk.bgWhite('[ MESSAGE ]')), chalk.black(chalk.bgGreen
  saldo
                   position = true
 		   return false
- }
-             }                                                                                                  }
+             }   
+}
+}                                                                              
   if (position === false) {
                 const objm = { id: m.sender, limit: 0 }
                 saldo.push(objm)
@@ -463,8 +464,8 @@ console.log(chalk.black(chalk.bgWhite('[ MESSAGE ]')), chalk.black(chalk.bgGreen
             return pendaftar[Math.floor(Math.random() * pendaftar.length)].id
         }
 
-        const addRegisteredUser = (m.sender, sender, age, time, serials) => {
-            const objlu = { id: m.sender, name: m.sender, age: age, time: time, serial: serials }
+        const addRegisteredUser = (userid, sender, age, time, serials) => {
+            const objlu = { id: userid, name: m.sender, age: age, time: time, serial: serials }
             pendaftar.push(objlu)
             fs.writeFileSync('./database/user.json', JSON.stringify(pendaftar))
         }
