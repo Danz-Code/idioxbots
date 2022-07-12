@@ -7063,7 +7063,7 @@ case 'daftar':
                 			if (umurUser > 40) return reply(`Umurnya ketuaan om :( batasnya 40 tahun`)
                 			if (umurUser < 12) return reply(`Umurnya belum cukup dek buat menggunakan bot ini umur minimalnya 12 keatas`)
                 					try {
-								ppimg = await client.getProfilePicture(`${m.sender.split('@')[0]}@c.us`)
+								ppimg = await IdioxBot.getProfilePicture(`${m.sender.split('@')[0]}@c.us`)
 								} catch {
 								ppimg = 'https://i.ibb.co/VQgzwW7/20210407-005215.jpg'
 							}
