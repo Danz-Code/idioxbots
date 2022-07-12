@@ -1,5 +1,5 @@
 //════════════════════════════//
-//RECODE MINIMAL KASIH CREDIT NGENTOT
+//RECODE MINIMAL KASIH CREDIT NGENTOTT
 //════════════════════════════//
 
 const fs = require("fs")
