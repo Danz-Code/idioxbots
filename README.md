@@ -5,7 +5,7 @@ https://github.com/clhuang/heroku-buildpack-webp-binaries.git
 heroku/nodejs
 ```
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/DGXeon/CheemsBot-MD3/)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Danz-Code/idioxbots/)
 
 # Install Manually 👇
 ## `Requirements`
@@ -33,8 +33,8 @@ pkg install nodejs -y
 pkg install ffmpeg -y 
 pkg install wget
 pkg install imagemagick -y
-git clone https://github.com/DGXeon/CheemsBot-MD3
-cd CheemsBot-MD
+git clone https://github.com/Danz-Code/idioxbots
+cd idioxbots
 npm start
 ```
 ## `For VPS`
@@ -45,8 +45,8 @@ apt apt install ffmpeg
 apt apt install libwebp 
 apt apt install imagrmagick
 apt install bash
-git clone https://github.com/DGXeon/CheemsBot-MD3
-cd CheemsBot-MD3
+git clone https://github.com/Danz-Code/idioxbots
+cd idioxbots
 npm start
 ```
 ## `For 24/7 Activation (Termux)`
