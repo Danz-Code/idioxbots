@@ -1642,7 +1642,7 @@ const jumlahUser = pendaftar.length
   if (!isInventory){ addInventori(m.sender) }
   if (!isInventoriBuruan){ addInventoriBuruan(m.sender) }
   
-  const saldoku = Saldouser(userid)
+  const saldoku = Saldouser(m.sender)
   const notedong = `📮 *Don't spam command or you will got banned.*`
 const menulist = `
 *INFORMATION :* ${notebest}
