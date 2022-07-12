@@ -428,7 +428,29 @@ console.log(chalk.black(chalk.bgWhite('[ MESSAGE ]')), chalk.black(chalk.bgGreen
                 fs.writeFileSync('./database/level.json', JSON.stringify(_level))
                 }
             }
+           const isSaldo = (m.sender) =>{       
+ let position = false
+  for (let i of saldo) {
+              if (i.id === m.sender) {
 
+  let saldos = i.saldo 
+		if (saldos >= saldoawal ) {
+                  position = true
+                   reply1(`Error! You not have money`)
+                    return true
+              } else {
+ saldo
+                  position = true
+		   return false
+ }
+             }                                                                                                  }
+  if (position === false) {
+                const objm = { id: m.sender, limit: 0 }
+                saldo.push(objm)
+                fs.writeFileSync('./database/pengguna/saldo.json',JSON.stringify(_limit))
+           return false
+       }
+     }
             const addLevelingId = (userId) => {
             const obj = {jid: userId, xp: 1, level: 1}
             _level.push(obj)
@@ -441,8 +463,8 @@ console.log(chalk.black(chalk.bgWhite('[ MESSAGE ]')), chalk.black(chalk.bgGreen
             return pendaftar[Math.floor(Math.random() * pendaftar.length)].id
         }
 
-        const addRegisteredUser = (userId, sender, age, time, serials) => {
-            const objlu = { id: userId, name: sender, age: age, time: time, serial: serials }
+        const addRegisteredUser = (m.sender, sender, age, time, serials) => {
+            const objlu = { id: m.sender, name: m.sender, age: age, time: time, serial: serials }
             pendaftar.push(objlu)
             fs.writeFileSync('./database/user.json', JSON.stringify(pendaftar))
         }
@@ -1619,6 +1641,7 @@ const jumlahUser = pendaftar.length
   if (!isInventory){ addInventori(m.sender) }
   if (!isInventoriBuruan){ addInventoriBuruan(m.sender) }
   
+  const saldoku = Saldouser(userId)
   const notedong = `📮 *Don't spam command or you will got banned.*`
 const menulist = `
 *INFORMATION :* ${notebest}
@@ -1635,6 +1658,7 @@ const menulist = `
 ╰╾「 _*USER INFORMATION*_ 」
 ├➢ *Your Name* : ${pushname}
 ├➢ *Status* : ${prema}
+├➢ *Saldo* : ${saldoku}
 ├➢ *Your Leveling* : ${levelMenu}
 ├➢ *Your Xp* : ${xpMenu}\ ${reqXp}
 ├➢ *Your Role* : ${role}
@@ -6987,7 +7011,7 @@ case 'daftar':
 							}
                 					veri = m.sender
                 					if (!m.isGroup) {
-                    			addRegisteredUser(userId, namaUser, umurUser, time, serialUser)
+                    			addRegisteredUser(m.sender, namaUser, umurUser, time, serialUser)
                     			await IdioxBot.sendMessage(from, ppimg, image, {quoted: mek, caption: mess.registered(namaUser, umurUser,  serialUser, time, sender)})
                     			addATM(userId)
 					            addSaldo(userId)
@@ -6995,7 +7019,7 @@ case 'daftar':
                     			checkLimit(userId)
                     			console.log(color('[REGISTER]'), color(time, 'yellow'), 'Name:', color(namaUser, 'cyan'), 'Age:', color(umurUser, 'cyan'), 'Serial:', color(serialUser, 'cyan'), 'in', color(m.sender || groupName))
                 			} else {
-                    			addRegisteredUser(userId, namaUser, umurUser, time, serialUser)
+                    			addRegisteredUser(m.sender, namaUser, umurUser, time, serialUser)
                     			await IdioxBot.sendMessage(from, ppimg, image, {quoted: mek, caption: mess.registered(namaUser, umurUser, serialUser, time, sender)})
                     			addATM(userId)
 					            addSaldo(userId)
@@ -9663,30 +9687,32 @@ case 'allmenu':
 var unicorn = await getBuffer(picak+'All Menu')
 await IdioxBot.send5ButImg(from, `
    「 OWNER  🔧⚙️ 」	
-⚒ ${prefix}self
-⚒ ${prefix}setinfo
-⚒ ${prefix}adminkan
-⚒ ${prefix}adminkan2 [TAG]
-⚒ ${prefix}unadmin
-⚒ ${prefix}unadmin2 [TAG]
-⚒ ${prefix}public
-⚒ ${prefix}antitag
-⚒ ${prefix}rentbot [add/del]
-⚒ ${prefix}rentlist
-⚒ ${prefix}ban [add/del]
-⚒ ${prefix}banchat [on/off]
-⚒ ${prefix}join [link]
-⚒ ${prefix}leavegc
-⚒ ${prefix}setbio
-⚒ ${prefix}block [user]
-⚒ ${prefix}unblock [user]
-⚒ ${prefix}bcgroup [text]
-⚒ ${prefix}bcall [text]
-⚒ ${prefix}setppbot [image]
-⚒ ${prefix}setexif
-⚒ ${prefix}block [tag/number]
-⚒ ${prefix}unblock [tag/number]
-⚒ ${prefix}coowner [add/del]
+⚙️ ${prefix}self
+⚙️ ${prefix}setinfo
+⚙️ ${prefix}adminkan
+⚙️ ${prefix}adminkan2 [TAG]
+⚙️ ${prefix}unadmin
+⚙️ ${prefix}unadmin2 [TAG]
+⚙️ ${prefix}public
+⚙️ ${prefix}antitag
+⚙️ ${prefix}rentbot [add/del]
+⚙️ ${prefix}rentlist
+⚙️ ${prefix}ban [add/del]
+⚙️ ${prefix}banchat [on/off]
+⚙️ ${prefix}join [link]
+⚙️ ${prefix}leavegc
+⚙️ ${prefix}setbio
+⚙️ ${prefix}block [user]
+⚙️ ${prefix}unblock [user]
+⚙️ ${prefix}bcgroup [text]
+⚙️ ${prefix}bcall [text]
+⚙️ ${prefix}setppbot [image]
+⚙️ ${prefix}setexif
+⚙️ ${prefix}anticall [on/off]
+⚙️ ${prefix}coowner [add/del]
+⚙️ [ FOR ADMIN FITURE ]
+⚙️ ${prefix}ban2 [add/del]
+⚙️ ${prefix}banchat2 [add/del]
 
   「 GROUP 👥 」	        
 ⚒${prefix}grousetting
@@ -9729,17 +9755,17 @@ await IdioxBot.send5ButImg(from, `
 ⚒${prefix}checkrent
 
   「 RPG 💉 」	
-⚒${prefix}hunt
-⚒${prefix}mine
-⚒${prefix}fish
-⚒${prefix}heal
-⚒${prefix}blood
-⚒${prefix}stab
-⚒${prefix}buy
-⚒${prefix}sell
-⚒${prefix}profile
-⚒${prefix}inventory
-⚒${prefix}leaderboard
+🪓${prefix}hunt
+⛏️${prefix}mine
+🪓${prefix}fish
+🛡️${prefix}heal
+🩸${prefix}blood
+🗡️${prefix}stab
+💰${prefix}buy
+💸${prefix}sell
+👤${prefix}profile
+📂${prefix}inventory
+⚔️${prefix}leaderboard
 
   「 MAKER ✏️ 」
 ⚒${prefix}candy
@@ -10273,10 +10299,10 @@ await IdioxBot.send5ButImg(from, `
 ⚒ ${prefix}suitpvp [tag]
 
   「 ANONYMOUS CHAT 」
-⚒${prefix}anonymous
-⚒${prefix}start
-⚒${prefix}next
-⚒${prefix}leave
+⚠️${prefix}anonymous
+🏁${prefix}start
+➡️${prefix}next
+❌${prefix}leave
 
    「 TOOL 」
 ⚒ ${prefix}kalkulator [number]
@@ -10390,32 +10416,32 @@ case 'ownermenu':
 	if (isBanChat) return reply(mess.banChat)
 var unicorn = await getBuffer(picak+'Owner Menu')
 await IdioxBot.send5ButImg(from, `「 OWNER  🔧⚙️ 」	
-⚒ ${prefix}self
-⚒ ${prefix}setinfo
-⚒ ${prefix}adminkan
-⚒ ${prefix}adminkan2 [TAG]
-⚒ ${prefix}unadmin
-⚒ ${prefix}unadmin2 [TAG]
-⚒ ${prefix}public
-⚒ ${prefix}antitag
-⚒ ${prefix}rentbot [add/del]
-⚒ ${prefix}rentlist
-⚒ ${prefix}ban [add/del]
-⚒ ${prefix}banchat [on/off]
-⚒ ${prefix}join [link]
-⚒ ${prefix}leavegc
-⚒ ${prefix}setbio
-⚒ ${prefix}block [user]
-⚒ ${prefix}unblock [user]
-⚒ ${prefix}bcgroup [text]
-⚒ ${prefix}bcall [text]
-⚒ ${prefix}setppbot [image]
-⚒ ${prefix}setexif
-⚒ ${prefix}anticall [on/off]
-⚒ ${prefix}coowner [add/del]
-⚒ [ FOR ADMIN FITURE ]
-⚒ ${prefix}ban2 [add/del]
-⚒ ${prefix}banchat2 [add/del]
+ ⚙️ ${prefix}self
+ ⚙️ ${prefix}setinfo
+ ⚙️ ${prefix}adminkan
+ ⚙️ ${prefix}adminkan2 [TAG]
+ ⚙️ ${prefix}unadmin
+ ⚙️ ${prefix}unadmin2 [TAG]
+ ⚙️ ${prefix}public
+ ⚙️ ${prefix}antitag
+ ⚙️ ${prefix}rentbot [add/del]
+ ⚙️ ${prefix}rentlist
+ ⚙️ ${prefix}ban [add/del]
+ ⚙️ ${prefix}banchat [on/off]
+ ⚙️ ${prefix}join [link]
+ ⚙️ ${prefix}leavegc
+ ⚙️ ${prefix}setbio
+ ⚙️ ${prefix}block [user]
+ ⚙️ ${prefix}unblock [user]
+ ⚙️ ${prefix}bcgroup [text]
+ ⚙️ ${prefix}bcall [text]
+ ⚙️ ${prefix}setppbot [image]
+ ⚙️ ${prefix}setexif
+ ⚙️ ${prefix}anticall [on/off]
+ ⚙️ ${prefix}coowner [add/del]
+ ⚙️ [ FOR ADMIN FITURE ]
+ ⚙️ ${prefix}ban2 [add/del]
+ ⚙️ ${prefix}banchat2 [add/del]
 ` + '' + ' ', `${botname}`,unicorn, [{"urlButton": {"displayText": "Website 📌","url": `${websitex}`}},{"urlButton": {"displayText": "Instagram🔖","url": `${instamy}`}},{"quickReplyButton": {"displayText": "Donate 🍜","id": 'donate'}},{"quickReplyButton": {"displayText": "Owner 👤","id": 'owner'}}] )
 break
 case 'groupmenu':
@@ -10472,17 +10498,17 @@ case 'rpgmenu':
 	if (isBanChat) return reply(mess.banChat)
 var unicorn = await getBuffer(picak+'Rpg Menu')
 await IdioxBot.send5ButImg(from, `「 RPG 💉 」	
-⚒${prefix}hunt
-⚒${prefix}mine
-⚒${prefix}fish
-⚒${prefix}heal
-⚒${prefix}blood
-⚒${prefix}stab
-⚒${prefix}buy
-⚒${prefix}sell
-⚒${prefix}profile
-⚒${prefix}inventory
-⚒${prefix}leaderboard
+🪓${prefix}hunt
+⛏️${prefix}mine
+🪓${prefix}fish
+🛡️${prefix}heal
+🩸${prefix}blood
+🗡️${prefix}stab
+💰${prefix}buy
+💸${prefix}sell
+👤${prefix}profile
+📂${prefix}inventory
+⚔️${prefix}leaderboard
 ` + '' + ' ', `${botname}`,unicorn, [{"urlButton": {"displayText": "Website 📌","url": `${websitex}`}},{"urlButton": {"displayText": "Instagram🔖","url": `${instamy}`}},{"quickReplyButton": {"displayText": "Donate 🍜","id": 'donate'}},{"quickReplyButton": {"displayText": "Owner 👤","id": 'owner'}}] )
 break
 case 'makermenu':
@@ -11098,10 +11124,10 @@ case 'anonymousmenu':
 	if (isBanChat) return reply(mess.banChat)
 var unicorn = await getBuffer(picak+'Anonymous Menu')
 await IdioxBot.send5ButImg(from, `「 ANONYMOUS 」	
-⚒${prefix}anonymous
-⚒${prefix}start
-⚒${prefix}next
-⚒${prefix}leave
+⚠️${prefix}anonymous
+🏁${prefix}start
+➡️${prefix}next
+❌${prefix}leave
 ` + '' + ' ', `${botname}`,unicorn, [{"urlButton": {"displayText": "Website 📌","url": `${websitex}`}},{"urlButton": {"displayText": "Instagram🔖","url": `${instamy}`}},{"quickReplyButton": {"displayText": "Donate 🍜","id": 'donate'}},{"quickReplyButton": {"displayText": "Owner 👤","id": 'owner'}}] )
 break
 case 'toolmenu':
@@ -11151,7 +11177,7 @@ await IdioxBot.send5ButImg(from, `「 INDO 🇲🇨 」
 ⚒ ${prefix}darkjoke
 ⚒ ${prefix}quotes
 ⚒ ${prefix}animequotes
-⚒${prefix}jalantikus-meme
+⚒ ${prefix}jalantikus-meme
 ⚒ ${prefix}merdeka-news 
 ⚒ ${prefix}kontan-news 
 ⚒ ${prefix}cnbc-news 
@@ -11167,18 +11193,18 @@ await IdioxBot.send5ButImg(from, `「 INDO 🇲🇨 」
 ⚒ ${prefix}antara-news 
 ⚒ ${prefix}cnn-news 
 ⚒ ${prefix}fajar-news 
-⚒${prefix}friendshipshortstory
-⚒${prefix}loveshortstory
-⚒${prefix}sacrificeshortstory
-⚒${prefix}disturbingshortstory
-⚒${prefix}islamicshortstory
-⚒${prefix}cinemaschedule
-⚒${prefix}nowplayingcinema
-⚒${prefix}amino
-⚒${prefix}wiki
-⚒${prefix}covidindo
-⚒${prefix}earthquake
-⚒${prefix}tvschedule
+⚒ ${prefix}friendshipshortstory
+⚒ ${prefix}loveshortstory
+⚒ ${prefix}sacrificeshortstory
+⚒ ${prefix}disturbingshortstory
+⚒ ${prefix}islamicshortstory
+⚒ ${prefix}cinemaschedule
+⚒ ${prefix}nowplayingcinema
+⚒ ${prefix}amino
+⚒ ${prefix}wiki
+⚒ ${prefix}covidindo
+⚒ ${prefix}earthquake
+⚒ ${prefix}tvschedule
 ` + '' + ' ', `${botname}`,unicorn, [{"urlButton": {"displayText": "Website 📌","url": `${websitex}`}},{"urlButton": {"displayText": "Instagram🔖","url": `${instamy}`}},{"quickReplyButton": {"displayText": "Donate 🍜","id": 'donate'}},{"quickReplyButton": {"displayText": "Owner 👤","id": 'owner'}}] )
 break
 case 'indohoroscopemenu':
