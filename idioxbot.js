@@ -460,6 +460,9 @@ console.log(chalk.black(chalk.bgWhite('[ MESSAGE ]')), chalk.black(chalk.bgGreen
             const createSerial = (size) => {
             return crypto.randomBytes(size).toString('hex').slice(0, size)
         }
+        const registered = (namaUser, umurUser, serialUser, time, sender) => {
+	     return`*「 DATA IDIOX BOT 」*\n\nkamu sudah terdaftar dengan data \n\n┏━⊱Nama\n┗⊱${namaUser}\n┏━⊱Nomer\n┗⊱wa.me/${m.sender.split("@")[0]}\n┏━⊱Umur\n┗⊱${umurUser}\n┏━⊱Waktu Pendaftaran\n┗⊱${time}\n\n┏━❉ *NS* ❉━\n┣⊱${serialUser}\n┗⊱NOTE : Kamu akan terkena banned apabila nama kamu mengandung sara/penghinaan`
+}
 	   const getRegisteredRandomId = () => {
             return pendaftar[Math.floor(Math.random() * pendaftar.length)].id
         }
@@ -1653,6 +1656,7 @@ const menulist = `
 ├➢ *Host Name* : Idioxhosts1
 ├➢ *Platform* : ${os.platform()}
 ├➢ *Total User* : ${Object.keys(global.db.users).length}
+├➢ *Total Register* : ${_registered.length}
 ├➢ *Total Hit* : ${jumlahcmd}
 ├➢ *Total Hit today* : ${jumlahharian}
 │
@@ -1704,8 +1708,10 @@ const reactionMessage = {
 //cases starts here
 switch(command) {
 	case 'alive': case 'panel': case 'list': case 'menu': case 'help': case '?': {
-		if (isBan) return reply(mess.ban)	 			
+		if (!isRegistered) return reply1(mess.noregist)
+if (isBan) return reply(mess.ban)	 			
 if (isBanChat) return reply(mess.banChat)
+
 IdioxBot.sendMessage(from, { react: { text: `${global.reactmoji}`, key: m.key }})
 	                let btn = [{
                                 urlButton: {
@@ -1765,6 +1771,7 @@ case 'menuxxx':
 case 'helpxxx':
 if (isBan) return reply(mess.ban)	 			
 if (isBanChat) return reply(mess.banChat)
+if (!isRegistered) return reply1(mess.noregist)
 IdioxBot.sendMessage(from, { react: { text: `${global.reactmoji}`, key: m.key }})
 let buttonmenu = [
         	{ urlButton: { displayText: `Website 🍒`, url : `${websitex}` } },
@@ -1913,6 +1920,7 @@ IdioxBot.sendMessage(from, {sticker:{url:"https://ZackIdioxBot.github.io/media/g
 break
 //logo maker
 case 'hoorror':{
+	if (!isRegistered) return reply1(mess.noregist)
 if (isBan) return reply(mess.ban)	 			
 if (isBanChat) return reply(mess.banChat)
      let link = `https://textpro.me/horror-blood-text-effect-online-883.html`
@@ -1923,6 +1931,7 @@ if (isBanChat) return reply(mess.banChat)
 }
    break
   case 'whitebear':{
+  	if (!isRegistered) return reply1(mess.noregist)
   	if (isBan) return reply(mess.ban)	 			
 if (isBanChat) return reply(mess.banChat)
      let link = `https://textpro.me/online-black-and-white-bear-mascot-logo-creation-1012.html`
@@ -1933,6 +1942,7 @@ if (isBanChat) return reply(mess.banChat)
 }
    break
 case 'thunder2':{
+	if (!isRegistered) return reply1(mess.noregist)
 	if (isBan) return reply(mess.ban)	 			
 if (isBanChat) return reply(mess.banChat)
      let link = `https://textpro.me/create-thunder-text-effect-online-881.html`
@@ -1943,6 +1953,7 @@ if (isBanChat) return reply(mess.banChat)
 }
    break
 case 'blackpink':{
+	if (!isRegistered) return reply1(mess.noregist)
 	if (isBan) return reply(mess.ban)	 			
 if (isBanChat) return reply(mess.banChat)
      let link = `https://textpro.me/create-blackpink-logo-style-online-1001.html`
@@ -1953,6 +1964,7 @@ if (isBanChat) return reply(mess.banChat)
 }
    break
 case 'neon':{
+	if (!isRegistered) return reply1(mess.noregist)
 	if (isBan) return reply(mess.ban)	 			
 if (isBanChat) return reply(mess.banChat)
      let link = `https://textpro.me/neon-light-text-effect-online-882.html`
@@ -1963,8 +1975,9 @@ if (isBanChat) return reply(mess.banChat)
 }
    break
 case 'matrix2':{
+	if (!isRegistered) return reply1(mess.noregist)
 	if (isBan) return reply(mess.ban)	 			
-if (isBanChat) return reply(mess.banChat)
+    if (isBanChat) return reply(mess.banChat)
      let link = `https://textpro.me/matrix-style-text-effect-online-884.html`
      let anui = await textpro(link, q)
      reply(`Wait a moment while making the logo about 1 minute`) 
@@ -1973,8 +1986,10 @@ if (isBanChat) return reply(mess.banChat)
 }
    break
 case 'sky':{
+    if (!isRegistered) return reply1(mess.noregist)
+	if (!isRegistered) return reply1(mess.noregist)
 	if (isBan) return reply(mess.ban)	 			
-if (isBanChat) return reply(mess.banChat)
+    if (isBanChat) return reply(mess.banChat)
      let link = `https://textpro.me/create-a-cloud-text-effect-on-the-sky-online-1004.html`
      let anui = await textpro(link, q)
      reply(`Wait a moment while making the logo about 1 minute`) 
@@ -1983,8 +1998,9 @@ if (isBanChat) return reply(mess.banChat)
 }
    break
 case 'joker':{
+    if (!isRegistered) return reply1(mess.noregist)
 	if (isBan) return reply(mess.ban)	 			
-if (isBanChat) return reply(mess.banChat)
+    if (isBanChat) return reply(mess.banChat)
      let link = `https://textpro.me/create-logo-joker-online-934.html`
      let anui = await textpro(link, q)
      reply(`Wait a moment while making the logo about 1 minute`) 
@@ -1993,8 +2009,9 @@ if (isBanChat) return reply(mess.banChat)
 }
    break
 case 'magma':{
+    if (!isRegistered) return reply1(mess.noregist)
 	if (isBan) return reply(mess.ban)	 			
-if (isBanChat) return reply(mess.banChat)
+    if (isBanChat) return reply(mess.banChat)
      let link = `https://textpro.me/create-a-magma-hot-text-effect-online-1030.html`
      let anui = await textpro(link, q)
      reply(`Wait a moment while making the logo about 1 minute`) 
@@ -2003,8 +2020,9 @@ if (isBanChat) return reply(mess.banChat)
 }
    break
 case 'sand':{
+    if (!isRegistered) return reply1(mess.noregist)
 	if (isBan) return reply(mess.ban)	 			
-if (isBanChat) return reply(mess.banChat)
+    if (isBanChat) return reply(mess.banChat)
      let link = `https://textpro.me/sand-writing-text-effect-online-990.html`
      let anui = await textpro(link, q)
      reply(`Wait a moment while making the logo about 1 minute`) 
@@ -2013,6 +2031,7 @@ if (isBanChat) return reply(mess.banChat)
 }
    break
 case 'pencil':{
+    if (!isRegistered) return reply1(mess.noregist)
 	if (isBan) return reply(mess.ban)	 			
 if (isBanChat) return reply(mess.banChat)
      let link = `https://textpro.me/create-a-sketch-text-effect-online-1044.html`
@@ -2023,6 +2042,7 @@ if (isBanChat) return reply(mess.banChat)
 }
    break
 case 'graffiti':{
+     if (!isRegistered) return reply1(mess.noregist)
 	if (isBan) return reply(mess.ban)	 			
 if (isBanChat) return reply(mess.banChat)
      let link = `https://textpro.me/create-wonderful-graffiti-art-text-effect-1011.html`
@@ -2033,6 +2053,7 @@ if (isBanChat) return reply(mess.banChat)
 }
    break
 case 'metallic':{
+    if (!isRegistered) return reply1(mess.noregist)
 	if (isBan) return reply(mess.ban)	 			
 if (isBanChat) return reply(mess.banChat)
      let link = `https://textpro.me/create-a-metallic-text-effect-free-online-1041.html`
@@ -2043,6 +2064,7 @@ if (isBanChat) return reply(mess.banChat)
 }
    break
 case 'steel':{
+    if (!isRegistered) return reply1(mess.noregist)
 	if (isBan) return reply(mess.ban)	 			
 if (isBanChat) return reply(mess.banChat)
      let link = `https://textpro.me/steel-text-effect-online-921.html`
@@ -2053,6 +2075,7 @@ if (isBanChat) return reply(mess.banChat)
 }
    break
 case 'harrypotter':{
+    if (!isRegistered) return reply1(mess.noregist)
 	if (isBan) return reply(mess.ban)	 			
 if (isBanChat) return reply(mess.banChat)
      let link = `https://textpro.me/create-harry-potter-text-effect-online-1025.html`
@@ -2063,6 +2086,7 @@ if (isBanChat) return reply(mess.banChat)
 }
    break
 case 'underwater':{
+    if (!isRegistered) return reply1(mess.noregist)
 	if (isBan) return reply(mess.ban)	 			
 if (isBanChat) return reply(mess.banChat)
      let link = `https://textpro.me/3d-underwater-text-effect-generator-online-1013.html`
@@ -2073,6 +2097,7 @@ if (isBanChat) return reply(mess.banChat)
 }
    break
 case 'luxury':{
+    if (!isRegistered) return reply1(mess.noregist)
 	if (isBan) return reply(mess.ban)	 			
 if (isBanChat) return reply(mess.banChat)
      let link = `https://textpro.me/3d-luxury-gold-text-effect-online-1003.html`
@@ -2083,6 +2108,7 @@ if (isBanChat) return reply(mess.banChat)
 }
    break
 case 'glue2':{
+    if (!isRegistered) return reply1(mess.noregist)
 	if (isBan) return reply(mess.ban)	 			
 if (isBanChat) return reply(mess.banChat)
      let link = `https://textpro.me/create-3d-glue-text-effect-with-realistic-style-986.html`
@@ -2093,6 +2119,7 @@ if (isBanChat) return reply(mess.banChat)
 }
    break
 case 'fabric':{
+    if (!isRegistered) return reply1(mess.noregist)
 	if (isBan) return reply(mess.ban)	 			
 if (isBanChat) return reply(mess.banChat)
      let link = `https://textpro.me/fabric-text-effect-online-964.html`
@@ -2103,6 +2130,7 @@ if (isBanChat) return reply(mess.banChat)
 }
    break
 case 'neonlight':{
+    if (!isRegistered) return reply1(mess.noregist)
 	if (isBan) return reply(mess.ban)	 			
 if (isBanChat) return reply(mess.banChat)
      let link = `https://textpro.me/neon-light-glitch-text-generator-online-1063.html`
@@ -2113,6 +2141,7 @@ if (isBanChat) return reply(mess.banChat)
 }
    break
 case 'lava':{
+    if (!isRegistered) return reply1(mess.noregist)
 	if (isBan) return reply(mess.ban)	 			
 if (isBanChat) return reply(mess.banChat)
      let link = `https://textpro.me/lava-text-effect-online-914.html`
@@ -2123,6 +2152,7 @@ if (isBanChat) return reply(mess.banChat)
 }
    break
 case 'toxic':{
+    if (!isRegistered) return reply1(mess.noregist)
 	if (isBan) return reply(mess.ban)	 			
 if (isBanChat) return reply(mess.banChat)
      let link = `https://textpro.me/toxic-text-effect-online-901.html`
@@ -2133,6 +2163,7 @@ if (isBanChat) return reply(mess.banChat)
 }
    break
 case 'ancient':{
+    if (!isRegistered) return reply1(mess.noregist)
 	if (isBan) return reply(mess.ban)	 			
 if (isBanChat) return reply(mess.banChat)
      let link = `https://textpro.me/3d-golden-ancient-text-effect-online-free-1060.html`
@@ -2143,6 +2174,7 @@ if (isBanChat) return reply(mess.banChat)
 }
    break
 case 'christmas2':{
+    if (!isRegistered) return reply1(mess.noregist)
 	if (isBan) return reply(mess.ban)	 			
 if (isBanChat) return reply(mess.banChat)
      let link = `https://textpro.me/sparkles-merry-christmas-text-effect-1054.html`
@@ -2153,6 +2185,7 @@ if (isBanChat) return reply(mess.banChat)
 }
    break
 case 'sci_fi':{
+    if (!isRegistered) return reply1(mess.noregist)
 	if (isBan) return reply(mess.ban)	 			
 if (isBanChat) return reply(mess.banChat)
      let link = `https://textpro.me/create-3d-sci-fi-text-effect-online-1050.html`
@@ -2163,6 +2196,7 @@ if (isBanChat) return reply(mess.banChat)
 }
    break
 case 'rainbow':{
+    if (!isRegistered) return reply1(mess.noregist)
 	if (isBan) return reply(mess.ban)	 			
 if (isBanChat) return reply(mess.banChat)
      let link = `https://textpro.me/3d-rainbow-color-calligraphy-text-effect-1049.html`
@@ -2173,6 +2207,7 @@ if (isBanChat) return reply(mess.banChat)
 }
    break
 case 'classic':{
+    if (!isRegistered) return reply1(mess.noregist)
 	if (isBan) return reply(mess.ban)	 			
 if (isBanChat) return reply(mess.banChat)
 let link = `https://textpro.me/video-game-classic-8-bit-text-effect-1037.html`
@@ -2183,6 +2218,7 @@ let anui = await textpro(link, q)
 }
    break
 case 'watercolor2':{
+    if (!isRegistered) return reply1(mess.noregist)
 	if (isBan) return reply(mess.ban)	 			
 if (isBanChat) return reply(mess.banChat)
 let link = `https://textpro.me/create-a-free-online-watercolor-text-effect-1017.html`
@@ -2193,6 +2229,7 @@ let anui = await textpro(link, q)
 }
    break
 case 'halloween2':{
+    if (!isRegistered) return reply1(mess.noregist)
 	if (isBan) return reply(mess.ban)	 			
 if (isBanChat) return reply(mess.banChat)
 let link = `https://textpro.me/create-a-spooky-halloween-text-effect-online-1046.html`
@@ -2203,6 +2240,7 @@ let anui = await textpro(link, q)
 }
    break
 case 'halloweenfire':{
+    if (!isRegistered) return reply1(mess.noregist)
 	if (isBan) return reply(mess.ban)	 			
 if (isBanChat) return reply(mess.banChat)
 let link = `https://textpro.me/halloween-fire-text-effect-940.html`
@@ -2213,6 +2251,7 @@ let anui = await textpro(link, q)
 }
    break
 case 'writing':{
+    if (!isRegistered) return reply1(mess.noregist)
 	if (isBan) return reply(mess.ban)	 			
 if (isBanChat) return reply(mess.banChat)
 let link = `https://textpro.me/sand-writing-text-effect-online-990.html`
@@ -2223,6 +2262,7 @@ let anui = await textpro(link, q)
 }
    break
 case 'foggy':{
+    if (!isRegistered) return reply1(mess.noregist)
 	if (isBan) return reply(mess.ban)	 			
 if (isBanChat) return reply(mess.banChat)
 let link = `https://textpro.me/write-text-on-foggy-window-online-free-1015.html`
@@ -2233,6 +2273,7 @@ let anui = await textpro(link, q)
 }
    break
 case 'marvel':{
+    if (!isRegistered) return reply1(mess.noregist)
 	if (isBan) return reply(mess.ban)	 			
 if (isBanChat) return reply(mess.banChat)
 let link = `https://textpro.me/create-logo-style-marvel-studios-ver-metal-972.html`
@@ -2243,6 +2284,7 @@ let anui = await textpro(link, q)
 }
    break
 case 'skeleton2':{
+    if (!isRegistered) return reply1(mess.noregist)
 	if (isBan) return reply(mess.ban)	 			
 if (isBanChat) return reply(mess.banChat)
 let link = `https://textpro.me/create-halloween-skeleton-text-effect-online-1047.html`
@@ -2253,6 +2295,7 @@ let anui = await textpro(link, q)
 }
    break
 case 'sketch':{
+    if (!isRegistered) return reply1(mess.noregist)
 	if (isBan) return reply(mess.ban)	 			
 if (isBanChat) return reply(mess.banChat)
 let link = `https://textpro.me/create-a-sketch-text-effect-online-1044.html`
@@ -2263,6 +2306,7 @@ let anui = await textpro(link, q)
 }
    break
 case 'wonderful':{
+    if (!isRegistered) return reply1(mess.noregist)
 	if (isBan) return reply(mess.ban)	 			
 if (isBanChat) return reply(mess.banChat)
 let link = `https://textpro.me/create-wonderful-graffiti-art-text-effect-1011.html`
@@ -2273,6 +2317,7 @@ let anui = await textpro(link, q)
 }
    break
 case 'cool':{
+    if (!isRegistered) return reply1(mess.noregist)
 	if (isBan) return reply(mess.ban)	 			
 if (isBanChat) return reply(mess.banChat)
 let link = `https://textpro.me/create-a-cool-graffiti-text-on-the-wall-1010.html`
@@ -2283,6 +2328,7 @@ let anui = await textpro(link, q)
 }
    break
 case 'collwall':{
+    if (!isRegistered) return reply1(mess.noregist)
 	if (isBan) return reply(mess.ban)	 			
 if (isBanChat) return reply(mess.banChat)
 let link = `https://textpro.me/create-cool-wall-graffiti-text-effect-online-1009.html`
@@ -2293,6 +2339,7 @@ let anui = await textpro(link, q)
 }
    break
 case 'multicolor2':{
+    if (!isRegistered) return reply1(mess.noregist)
 	if (isBan) return reply(mess.ban)	 			
 if (isBanChat) return reply(mess.banChat)
 let link = `https://textpro.me/online-multicolor-3d-paper-cut-text-effect-1016.html`
@@ -2303,6 +2350,7 @@ let anui = await textpro(link, q)
 }
    break
 case 'batman':{
+    if (!isRegistered) return reply1(mess.noregist)
 	if (isBan) return reply(mess.ban)	 			
 if (isBanChat) return reply(mess.banChat)
 let link = `https://textpro.me/make-a-batman-logo-online-free-1066.html`
@@ -2313,6 +2361,7 @@ let anui = await textpro(link, q)
 }
    break
 case 'juice':{
+    if (!isRegistered) return reply1(mess.noregist)
 	if (isBan) return reply(mess.ban)	 			
 if (isBanChat) return reply(mess.banChat)
 let link = `https://textpro.me/fruit-juice-text-effect-861.html`
@@ -2323,6 +2372,7 @@ let anui = await textpro(link, q)
 }
    break
 case 'pornhub':{
+    if (!isRegistered) return reply1(mess.noregist)
 	if (isBan) return reply(mess.ban)	 			
 if (isBanChat) return reply(mess.banChat)
 if(!q) return reply(`Example: ${prefix + command} ajg | ea`)
@@ -2337,6 +2387,7 @@ IdioxBot.sendMessage(from,{image:{url:anu}, caption:"Here you go!"},{quoted:m})
 }
 break
 case 'retro':{
+    if (!isRegistered) return reply1(mess.noregist)
 	if (isBan) return reply(mess.ban)	 			
 if (isBanChat) return reply(mess.banChat)
 if(!q) return reply(`Example: ${prefix + command} ajg | ea`)
@@ -2351,6 +2402,7 @@ IdioxBot.sendMessage(from,{image:{url:anu}, caption:"Here you go!"},{quoted:m})
 }
 break
 case 'horror':{
+    if (!isRegistered) return reply1(mess.noregist)
 	if (isBan) return reply(mess.ban)	 			
 if (isBanChat) return reply(mess.banChat)
 if(!q) return reply(`Example: ${prefix + command} ajg | ea`)
@@ -2365,6 +2417,7 @@ IdioxBot.sendMessage(from,{image:{url:anu}, caption:"Here you go!"},{quoted:m})
 }
 break
 case '8bit':{
+    if (!isRegistered) return reply1(mess.noregist)
 	if (isBan) return reply(mess.ban)	 			
 if (isBanChat) return reply(mess.banChat)
 if(!q) return reply(`Example: ${prefix + command} ajg | ea`)
@@ -2458,6 +2511,7 @@ if (isBanChat) return reply(mess.banChat)
   }   
   break  
   case 'blood':{
+    if (!isRegistered) return reply1(mess.noregist)
   	if (isBan) return reply(mess.ban)	 			
 if (isBanChat) return reply(mess.banChat)
   if (!isDarah){ addInventoriDarah(m.sender, DarahAwal) }
@@ -2466,6 +2520,7 @@ if (isBanChat) return reply(mess.banChat)
   }
   break
   case 'stab':{
+    if (!isRegistered) return reply1(mess.noregist)
   	if (isBan) return reply(mess.ban)	 			
 if (isBanChat) return reply(mess.banChat)
   if (isCekDarah < 1) return reply('Your blood is gone')
@@ -2474,6 +2529,7 @@ if (isBanChat) return reply(mess.banChat)
   }
   break
 case 'mining': case 'mine':{
+    if (!isRegistered) return reply1(mess.noregist)
 	if (isBan) return reply(mess.ban)	 			
 if (isBanChat) return reply(mess.banChat)
   if (!isInventory){ addInventori(m.sender) }
@@ -2513,6 +2569,7 @@ if (isBanChat) return reply(mess.banChat)
   }   
   break 
   case 'beli': case 'buy':{
+    if (!isRegistered) return reply1(mess.noregist)
   	if (isBan) return reply(mess.ban)	 			
 if (isBanChat) return reply(mess.banChat)
  if (!isInventoriBuruan){ addInventoriBuruan(m.sender) } 
@@ -2556,6 +2613,7 @@ if (isBanChat) return reply(mess.banChat)
  }
  break
  case 'sell': case 'jual':{
+    if (!isRegistered) return reply1(mess.noregist)
  	if (isBan) return reply(mess.ban)	 			
 if (isBanChat) return reply(mess.banChat)
  if (!q) return reply(`What do you want to sell??\nExample : ${prefix + command} fish 2`)
@@ -2658,6 +2716,7 @@ if (isBanChat) return reply(mess.banChat)
  break
 
  case 'heal':{
+    if (!isRegistered) return reply1(mess.noregist)
  	if (isBan) return reply(mess.ban)	 			
 if (isBanChat) return reply(mess.banChat)
  if (!isCekDarah < 1) return reply('You can only heal when your blood is 0')
@@ -2867,6 +2926,7 @@ let sections = []
   break
 case 'grupsetting':
             case 'groupsetting':{
+    if (!isRegistered) return reply1(mess.noregist)
             	if (isBan) return reply(mess.ban)	 			
 if (isBanChat) return reply(mess.banChat)
                     let sections = []
@@ -7006,7 +7066,7 @@ case 'daftar':
                 			if (umurUser > 40) return reply(`Umurnya ketuaan om :( batasnya 40 tahun`)
                 			if (umurUser < 12) return reply(`Umurnya belum cukup dek buat menggunakan bot ini umur minimalnya 12 keatas`)
                 					try {
-								ppimg = await client.getProfilePicture(`${m.sender.split('@')[0]}@c.us`)
+								ppimg = await IdioxBot.getProfilePicture(`${m.sender.split('@')[0]}@c.us`)
 								} catch {
 								ppimg = 'https://i.ibb.co/VQgzwW7/20210407-005215.jpg'
 							}
@@ -9526,6 +9586,7 @@ case 'kalkulator':
             }
             break
                 case 'command': {
+                	if (!isRegistered) return reply1(mess.noregist)
                 	   if (isBan) return reply(mess.ban)
 	if (isBanChat) return reply(mess.banChat)
 let template = await generateWAMessageFromContent(m.chat, proto.Message.fromObject({
@@ -9683,6 +9744,7 @@ let template = await generateWAMessageFromContent(m.chat, proto.Message.fromObje
             }
             break
 case 'allmenu':
+if (!isRegistered) return reply1(mess.noregist)
 	   if (isBan) return reply(mess.ban)
 	if (isBanChat) return reply(mess.banChat)
 var unicorn = await getBuffer(picak+'All Menu')
@@ -10413,6 +10475,7 @@ await IdioxBot.send5ButImg(from, `
 ⚒ ${prefix}report [bug]` + '' + ' ', `${botname}`,unicorn, [{"urlButton": {"displayText": "Website 📌","url": `${websitex}`}},{"urlButton": {"displayText": "Instagram🔖","url": `${instamy}`}},{"quickReplyButton": {"displayText": "Donate 🍜","id": 'donate'}},{"quickReplyButton": {"displayText": "Owner 👤","id": 'owner'}}] )
 break
 case 'ownermenu':
+if (!isRegistered) return reply1(mess.noregist)
 	   if (isBan) return reply(mess.ban)
 	if (isBanChat) return reply(mess.banChat)
 var unicorn = await getBuffer(picak+'Owner Menu')
@@ -10446,6 +10509,7 @@ await IdioxBot.send5ButImg(from, `「 OWNER  🔧⚙️ 」
 ` + '' + ' ', `${botname}`,unicorn, [{"urlButton": {"displayText": "Website 📌","url": `${websitex}`}},{"urlButton": {"displayText": "Instagram🔖","url": `${instamy}`}},{"quickReplyButton": {"displayText": "Donate 🍜","id": 'donate'}},{"quickReplyButton": {"displayText": "Owner 👤","id": 'owner'}}] )
 break
 case 'groupmenu':
+if (!isRegistered) return reply1(mess.noregist)
 	   if (isBan) return reply(mess.ban)
 	if (isBanChat) return reply(mess.banChat)
 var unicorn = await getBuffer(picak+'Group Menu')
@@ -10495,6 +10559,7 @@ await IdioxBot.send5ButImg(from, `「 GROUP 👥 」
 ` + '' + ' ', `${botname}`,unicorn, [{"urlButton": {"displayText": "Website 📌","url": `${websitex}`}},{"urlButton": {"displayText": "Instagram🔖","url": `${instamy}`}},{"quickReplyButton": {"displayText": "Donate 🍜","id": 'donate'}},{"quickReplyButton": {"displayText": "Owner 👤","id": 'owner'}}] )
 break
 case 'rpgmenu':
+if (!isRegistered) return reply1(mess.noregist)
 	   if (isBan) return reply(mess.ban)
 	if (isBanChat) return reply(mess.banChat)
 var unicorn = await getBuffer(picak+'Rpg Menu')
@@ -10510,9 +10575,10 @@ await IdioxBot.send5ButImg(from, `「 RPG 💉 」
 👤${prefix}profile
 📂${prefix}inventory
 ⚔️${prefix}leaderboard
-` + '' + ' ', `${botname}`,unicorn, [{"urlButton": {"displayText": "Website 📌","url": `${websitex}`}},{"urlButton": {"displayText": "Instagram🔖","url": `${instamy}`}},{"quickReplyButton": {"displayText": "Donate 🍜","id": 'donate'}},{"quickReplyButton": {"displayText": "Owner 👤","id": 'owner'}}] )
+` + '' + ' ', `${botname}`,unicorn, [{"urlButton": {"displayText": "Website 📌","url": `${websitex}`}},{"urlButton": {"displayText": "Instagram🔖","url": `${instamy}`}},{"quickReplyButton": {"displayText": "Donate ??","id": 'donate'}},{"quickReplyButton": {"displayText": "Owner 👤","id": 'owner'}}] )
 break
 case 'makermenu':
+if (!isRegistered) return reply1(mess.noregist)
 	   if (isBan) return reply(mess.ban)
 	if (isBanChat) return reply(mess.banChat)
 var unicorn = await getBuffer(picak+'Maker Menu')
@@ -10627,6 +10693,7 @@ await IdioxBot.send5ButImg(from, ` 「 MAKER ✏️ 」
 ` + '' + ' ', `${botname}`,unicorn, [{"urlButton": {"displayText": "Website 📌","url": `${websitex}`}},{"urlButton": {"displayText": "Instagram🔖","url": `${instamy}`}},{"quickReplyButton": {"displayText": "Donate 🍜","id": 'donate'}},{"quickReplyButton": {"displayText": "Owner 👤","id": 'owner'}}] )
 break
 case 'downloadmenu':
+if (!isRegistered) return reply1(mess.noregist)
 	   if (isBan) return reply(mess.ban)
 	if (isBanChat) return reply(mess.banChat)
 var unicorn = await getBuffer(picak+'Download Menu')
@@ -10651,6 +10718,7 @@ await IdioxBot.send5ButImg(from, `「 DOWNLOAD 📂 」
 ` + '' + ' ', `${botname}`,unicorn, [{"urlButton": {"displayText": "Website 📌","url": `${websitex}`}},{"urlButton": {"displayText": "Instagram🔖","url": `${instamy}`}},{"quickReplyButton": {"displayText": "Donate 🍜","id": 'donate'}},{"quickReplyButton": {"displayText": "Owner 👤","id": 'owner'}}] )
 break
 case 'searchmenu':
+if (!isRegistered) return reply1(mess.noregist)
 	   if (isBan) return reply(mess.ban)
 	if (isBanChat) return reply(mess.banChat)
 var unicorn = await getBuffer(picak+'Search Menu')
@@ -10684,6 +10752,7 @@ await IdioxBot.send5ButImg(from, ` 「 SEARCH 🔎 」
 ` + '' + ' ', `${botname}`,unicorn, [{"urlButton": {"displayText": "Website 📌","url": `${websitex}`}},{"urlButton": {"displayText": "Instagram🔖","url": `${instamy}`}},{"quickReplyButton": {"displayText": "Donate 🍜","id": 'donate'}},{"quickReplyButton": {"displayText": "Owner 👤","id": 'owner'}}] )
 break
 case 'convertmenu':
+if (!isRegistered) return reply1(mess.noregist)
 	   if (isBan) return reply(mess.ban)
 	if (isBanChat) return reply(mess.banChat)
 var unicorn = await getBuffer(picak+'Convert Menu')
@@ -10719,6 +10788,7 @@ await IdioxBot.send5ButImg(from, `「 CONVERT 💱 」
 ` + '' + ' ', `${botname}`,unicorn, [{"urlButton": {"displayText": "Website 📌","url": `${websitex}`}},{"urlButton": {"displayText": "Instagram🔖","url": `${instamy}`}},{"quickReplyButton": {"displayText": "Donate 🍜","id": 'donate'}},{"quickReplyButton": {"displayText": "Owner 👤","id": 'owner'}}] )
 break
 case 'randomimagemenu':
+if (!isRegistered) return reply1(mess.noregist)
 	   if (isBan) return reply(mess.ban)
 	if (isBanChat) return reply(mess.banChat)
 var unicorn = await getBuffer(picak+'Random Image Menu')
@@ -10738,6 +10808,7 @@ await IdioxBot.send5ButImg(from, `「 RANDOM IMG 📷 」
 ` + '' + ' ', `${botname}`,unicorn, [{"urlButton": {"displayText": "Website 📌","url": `${websitex}`}},{"urlButton": {"displayText": "Instagram🔖","url": `${instamy}`}},{"quickReplyButton": {"displayText": "Donate 🍜","id": 'donate'}},{"quickReplyButton": {"displayText": "Owner 👤","id": 'owner'}}] )
 break
 case 'animemenu':
+if (!isRegistered) return reply1(mess.noregist)
 	   if (isBan) return reply(mess.ban)
 	if (isBanChat) return reply(mess.banChat)
 var unicorn = await getBuffer(picak+'Anime Menu')
@@ -10769,6 +10840,7 @@ await IdioxBot.send5ButImg(from, `「 ANIME 」
 ` + '' + ' ', `${botname}`,unicorn, [{"urlButton": {"displayText": "Website 📌","url": `${websitex}`}},{"urlButton": {"displayText": "Instagram🔖","url": `${instamy}`}},{"quickReplyButton": {"displayText": "Donate 🍜","id": 'donate'}},{"quickReplyButton": {"displayText": "Owner 👤","id": 'owner'}}] )
 break
 case 'stickermenu':
+if (!isRegistered) return reply1(mess.noregist)
 	   if (isBan) return reply(mess.ban)
 	if (isBanChat) return reply(mess.banChat)
 var unicorn = await getBuffer(picak+'Sticker Menu')
@@ -10783,6 +10855,7 @@ await IdioxBot.send5ButImg(from, `「 STICKER 」
 ` + '' + ' ', `${botname}`,unicorn, [{"urlButton": {"displayText": "Website 📌","url": `${websitex}`}},{"urlButton": {"displayText": "Instagram🔖","url": `${instamy}`}},{"quickReplyButton": {"displayText": "Donate 🍜","id": 'donate'}},{"quickReplyButton": {"displayText": "Owner 👤","id": 'owner'}}] )
 break
 case 'animestickermenu':
+if (!isRegistered) return reply1(mess.noregist)
 	   if (isBan) return reply(mess.ban)
 	if (isBanChat) return reply(mess.banChat)
 var unicorn = await getBuffer(picak+'Anime Sticker Menu')
@@ -10819,6 +10892,7 @@ await IdioxBot.send5ButImg(from, `「 ANIME STICKER 」
 ` + '' + ' ', `${botname}`,unicorn, [{"urlButton": {"displayText": "Website 📌","url": `${websitex}`}},{"urlButton": {"displayText": "Instagram🔖","url": `${instamy}`}},{"quickReplyButton": {"displayText": "Donate 🍜","id": 'donate'}},{"quickReplyButton": {"displayText": "Owner 👤","id": 'owner'}}] )
 break
 case 'nsfwmenu':
+if (!isRegistered) return reply1(mess.noregist)
 	   if (isBan) return reply(mess.ban)
 	if (isBanChat) return reply(mess.banChat)
 var unicorn = await getBuffer(picak+'Nsfw Menu')
@@ -10851,6 +10925,7 @@ await IdioxBot.send5ButImg(from, `「 NSFW 」
 ` + '' + ' ', `${botname}`,unicorn, [{"urlButton": {"displayText": "Website 📌","url": `${websitex}`}},{"urlButton": {"displayText": "Instagram🔖","url": `${instamy}`}},{"quickReplyButton": {"displayText": "Donate 🍜","id": 'donate'}},{"quickReplyButton": {"displayText": "Owner 👤","id": 'owner'}}] )
 break
 case 'funmenu':
+if (!isRegistered) return reply1(mess.noregist)
 	   if (isBan) return reply(mess.ban)
 	if (isBanChat) return reply(mess.banChat)
 var unicorn = await getBuffer(picak+'Fun Menu')
@@ -10928,6 +11003,7 @@ await IdioxBot.send5ButImg(from, `「 Fun 」
 ` + '' + ' ', `${botname}`,unicorn, [{"urlButton": {"displayText": "Website 📌","url": `${websitex}`}},{"urlButton": {"displayText": "Instagram🔖","url": `${instamy}`}},{"quickReplyButton": {"displayText": "Donate 🍜","id": 'donate'}},{"quickReplyButton": {"displayText": "Owner 👤","id": 'owner'}}] )
 break
 case 'soundmenu':
+if (!isRegistered) return reply1(mess.noregist)
 	   if (isBan) return reply(mess.ban)
 	if (isBanChat) return reply(mess.banChat)
 var unicorn = await getBuffer(picak+'Sound Menu')
@@ -11107,6 +11183,7 @@ await IdioxBot.send5ButImg(from, `「 ENC 🔐 」
 ` + '' + ' ', `${botname}`,unicorn, [{"urlButton": {"displayText": "Instagram","url": `${websitex}`}},{"urlButton": {"displayText": "Instagram","url": `${instamy}`}},{"quickReplyButton": {"displayText": "Donate 🍜","id": 'donate'}},{"quickReplyButton": {"displayText": "Owner 👤","id": 'owner'}}] )
 break
 case 'gamemenu':
+if (!isRegistered) return reply1(mess.noregist)
 	   if (isBan) return reply(mess.ban)
 	if (isBanChat) return reply(mess.banChat)
 var unicorn = await getBuffer(picak+'Game Menu')
@@ -11121,6 +11198,7 @@ await IdioxBot.send5ButImg(from, `「 GAME 🎮 」
 ` + '' + ' ', `${botname}`,unicorn, [{"urlButton": {"displayText": "Website 📌","url": `${websitex}`}},{"urlButton": {"displayText": "Instagram🔖","url": `${instamy}`}},{"quickReplyButton": {"displayText": "Donate 🍜","id": 'donate'}},{"quickReplyButton": {"displayText": "Owner 👤","id": 'owner'}}] )
 break
 case 'anonymousmenu':
+if (!isRegistered) return reply1(mess.noregist)
 	   if (isBan) return reply(mess.ban)
 	if (isBanChat) return reply(mess.banChat)
 var unicorn = await getBuffer(picak+'Anonymous Menu')
@@ -11132,6 +11210,7 @@ await IdioxBot.send5ButImg(from, `「 ANONYMOUS 」
 ` + '' + ' ', `${botname}`,unicorn, [{"urlButton": {"displayText": "Website 📌","url": `${websitex}`}},{"urlButton": {"displayText": "Instagram🔖","url": `${instamy}`}},{"quickReplyButton": {"displayText": "Donate 🍜","id": 'donate'}},{"quickReplyButton": {"displayText": "Owner 👤","id": 'owner'}}] )
 break
 case 'toolmenu':
+if (!isRegistered) return reply1(mess.noregist)
 	   if (isBan) return reply(mess.ban)
 	if (isBanChat) return reply(mess.banChat)
 var unicorn = await getBuffer(picak+'Tool Menu')
@@ -11144,6 +11223,7 @@ await IdioxBot.send5ButImg(from, `「 TOOL 🔧 」
 ` + '' + ' ', `${botname}`,unicorn, [{"urlButton": {"displayText": "Website 📌","url": `${websitex}`}},{"urlButton": {"displayText": "Instagram🔖","url": `${instamy}`}},{"quickReplyButton": {"displayText": "Donate 🍜","id": 'donate'}},{"quickReplyButton": {"displayText": "Owner 👤","id": 'owner'}}] )
 break
 case 'databasemenu':
+if (!isRegistered) return reply1(mess.noregist)
 	   if (isBan) return reply(mess.ban)
 	if (isBanChat) return reply(mess.banChat)
 var unicorn = await getBuffer(picak+'Database Menu')
@@ -11159,6 +11239,7 @@ await IdioxBot.send5ButImg(from, `「 DATABASE 📂 」
 ` + '' + ' ', `${botname}`,unicorn, [{"urlButton": {"displayText": "Website 📌","url": `${websitex}`}},{"urlButton": {"displayText": "Instagram🔖","url": `${instamy}`}},{"quickReplyButton": {"displayText": "Donate 🍜","id": 'donate'}},{"quickReplyButton": {"displayText": "Owner 👤","id": 'owner'}}] )
 break
 case 'islamicmenu':
+if (!isRegistered) return reply1(mess.noregist)
 	   if (isBan) return reply(mess.ban)
 	if (isBanChat) return reply(mess.banChat)
 var unicorn = await getBuffer(picak+'Islamic Menu')
@@ -11171,6 +11252,7 @@ await IdioxBot.send5ButImg(from, `「 ISLAMIC ☪️ 」
 ` + '' + ' ', `${botname}`,unicorn, [{"urlButton": {"displayText": "Website 📌","url": `${websitex}`}},{"urlButton": {"displayText": "Instagram🔖","url": `${instamy}`}},{"quickReplyButton": {"displayText": "Donate 🍜","id": 'donate'}},{"quickReplyButton": {"displayText": "Owner 👤","id": 'owner'}}] )
 break
 case 'indomenu':
+if (!isRegistered) return reply1(mess.noregist)
 	   if (isBan) return reply(mess.ban)
 	if (isBanChat) return reply(mess.banChat)
 var unicorn = await getBuffer(picak+'Indo Menu')
@@ -11209,6 +11291,7 @@ await IdioxBot.send5ButImg(from, `「 INDO 🇲🇨 」
 ` + '' + ' ', `${botname}`,unicorn, [{"urlButton": {"displayText": "Website 📌","url": `${websitex}`}},{"urlButton": {"displayText": "Instagram🔖","url": `${instamy}`}},{"quickReplyButton": {"displayText": "Donate 🍜","id": 'donate'}},{"quickReplyButton": {"displayText": "Owner 👤","id": 'owner'}}] )
 break
 case 'indohoroscopemenu':
+if (!isRegistered) return reply1(mess.noregist)
 	   if (isBan) return reply(mess.ban)
 	if (isBanChat) return reply(mess.banChat)
 var unicorn = await getBuffer(picak+'Indo Horoscope Menu')

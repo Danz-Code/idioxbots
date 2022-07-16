@@ -1,5 +1,5 @@
 //════════════════════════════//
-//RECODE MINIMAL KASIH CREDIT NGENTOTT
+//RECODE MINIMAL KASIH CREDIT NGENTOT
 //════════════════════════════//
 
 const fs = require("fs")
@@ -97,9 +97,6 @@ exports.limitend = (pushname) => {
 }
 `
 }
-exports.registered = (namaUser, umurUser, serialUser, time, m.sender) => {
-	return`*「 DATA IDIOX BOT 」*\n\nkamu sudah terdaftar dengan data \n\n┏━⊱Nama\n┗⊱${namaUser}\n┏━⊱Nomer\n┗⊱wa.me/${m.sender.split("@")[0]}\n┏━⊱Umur\n┗⊱${umurUser}\n┏━⊱Waktu Pendaftaran\n┗⊱${time}\n\n┏━❉ *NS* ❉━\n┣⊱${serialUser}\n┗⊱NOTE : Kamu akan terkena banned apabila nama kamu mengandung sara/penghinaan`
-}
 exports.wrongf = () => {
 	return`「 ❗ 」*Format salah/text kosong*`
 }
@@ -120,7 +117,7 @@ global.mess = {
     linkm: '*Linknya Mana?*',
     error: 'Error!',
     rediregis: 'Kamu sudah sudah terdaftar dalam database!',
-    noregist: `Kamu tidak terdaftar dalam database! Ketik ${prefix}daftar Nama|Umur`,
+    noregist: 'Kamu tidak terdaftar dalam database!',
     ban: 'You have been banned by the owner, if you want to be unbanned, chat owner.',
     nsfw: 'The nsfw feature has not been activated, please contact the admin to activate',
     banChat: 'The bot was banned in this group, please contact the owner to unban'
