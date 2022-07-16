@@ -176,7 +176,7 @@ sourceUrl: `${websitex}`,
 mediaUrl: `${websitex}`
 }}
 }
-IdioxBot.sendMessage(anu.id, buttonMessage, bufflu, MessageType.image {quoted:unicorndoc})
+IdioxBot.sendMessage(anu.id, bufflu, buttonMessage {quoted:unicorndoc})
                 } else if (anu.action == 'remove') {
                 	const buffer = await getBuffer(ppuser)
                     const danztime = moment.tz('Asia/Kolkata').format('HH:mm:ss')
